@@ -55,8 +55,13 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
  이처럼 블록체인 상에서의 P2P 전력 거래 시스템이 많지만 다들 유저의 프라이버시 문제는 고려하지 않고 있다. 현재 시스템은 누가 누구에게 얼만큼의 전력을 얼마에 팔았는지 모두 드러나게 되어 프라이버시가 보호되지 않는다. 이에 우리는 전력 수요를 예측하는 머신러닝 모델을 학습 시킬 때도 유저들의 개인 정보가 드러나지 않는 Privacy Preserving Deep Learning [2] 방식을 도입하였으며, 블록 체인 상에서 유저간 거래 정보를 보호하기 위해 자세한 정보는 보이지 않으면서도 거래의 유효성은 검증할 수 있게 해주는 Zero Knowledge Proof [1] 기술을 활용하고자 한다. 
 
 [1] Feige, Uriel, Amos Fiat, and Adi Shamir. "Zero-knowledge proofs of identity." Journal of cryptology 1.2 (1988): 77-94.
+
 [2] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
+
 [3] 스마트 그리드 - https://blog.kepco.co.kr/1532
+
 [4] 스마트 그리드 시장 활성화 - http://www.bloter.net/archives/72049
+
 [5] 해외 에너지 기술 회사 - https://www.mk.co.kr/news/economy/view/2018/06/384275/
+
 [6] 한전 오픈 마이크로 그리드 – https://jnilbo.com/2019/01/22/2019012214534911773/
