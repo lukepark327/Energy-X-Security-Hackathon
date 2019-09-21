@@ -46,19 +46,19 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 ## 🚩 참고자료
 * 제안 SW개발에 참고한 자료 또는 제안 아이디어의 실효성을 판단하는 데 도움이 될 수 있는 자료 등이 있을 경우 기술할 것
 
- 전세계적으로 스마트 그리드[3]에 블록체인을 접목시키는 기술에 대한 관심이 커지고 있다 [4]. 2003년에 미국이 대규모 정전 사태 이후 스마트 그리드 사업을 발전 시킨 것을 시작으로 유럽 및 여러 나라들이 도입을 시도하였다. 한국 또한 지식경제부가 ‘스마트 그리드 전략 로드맵2011’을 발표하며 스마트그리드 사업을 진행해왔다. 
+ 전세계적으로 스마트 그리드[1]에 블록체인을 접목시키는 기술에 대한 관심이 커지고 있다 [4]. 2003년에 미국이 대규모 정전 사태 이후 스마트 그리드 사업을 발전 시킨 것을 시작으로 유럽 및 여러 나라들이 도입을 시도하였다. 한국 또한 지식경제부가 ‘스마트 그리드 전략 로드맵2011’을 발표하며 스마트그리드 사업을 진행해왔다. 
  
  이후 신재생 에너지 기술과 에너지 저장 장치(ESS) 기술 발전을 통해 스마트 그리드의 확장형인 마이크로 그리드가 등장하였다. 이는 특정 지역에 기존 전력망으로부터 소규모 독립적 분산전원을 중심으로 지급하는 독립형 전력망을 의미하며 안정적인 전력 수급을 보장함과 동시에 남은 전력을 매매할 수도 있게 한다. 한전의 오픈 마이크로 그리드[6]를 예시로 들 수 있다. 
  
  이처럼 여러 분산전원과 전력 매매 시장이 생겨났기에 자연스럽게 블록체인 기술을 접목할 수 있다. 여러 사례들[5]이 있는데, 먼저 영국의 스타트업 Verv는 런던 북동부 지역인 해크니 주택단지에 시범적으로 블록체인을 통한 P2P 전력거래 시스템을 도입하였다. 미국의 스타트업 LO3는 뉴욕 브루클린 지역을 대상으로 잉여전력 거래 시스템을 구축하였고, 호주의 Power Ledger는 호주 정부와 협력하여 스마트 그리드 구축으 진행하였다. 또한 오스트리아의 Grid Singularity는 블록체인을 통해 에너지 수요 관리 및 데이터 거래를 할 수 있게 하였다. 
  
- 이처럼 블록체인 상에서의 P2P 전력 거래 시스템이 많지만 다들 유저의 프라이버시 문제는 고려하지 않고 있다. 현재 시스템은 누가 누구에게 얼만큼의 전력을 얼마에 팔았는지 모두 드러나게 되어 프라이버시가 보호되지 않는다. 이에 우리는 전력 수요를 예측하는 머신러닝 모델을 학습 시킬 때도 유저들의 개인 정보가 드러나지 않는 Privacy Preserving Deep Learning [2] 방식을 도입하였으며, 블록 체인 상에서 유저간 거래 정보를 보호하기 위해 자세한 정보는 보이지 않으면서도 거래의 유효성은 검증할 수 있게 해주는 Zero Knowledge Proof [1] 기술을 활용하고자 한다. 
+ 이처럼 블록체인 상에서의 P2P 전력 거래 시스템이 많지만 다들 유저의 프라이버시 문제는 고려하지 않고 있다. 현재 시스템은 누가 누구에게 얼만큼의 전력을 얼마에 팔았는지 모두 드러나게 되어 프라이버시가 보호되지 않는다. 이에 우리는 전력 수요를 예측하는 머신러닝 모델을 학습 시킬 때도 유저들의 개인 정보가 드러나지 않는 Privacy Preserving Deep Learning [3] 방식을 도입하였으며, 블록 체인 상에서 유저간 거래 정보를 보호하기 위해 자세한 정보는 보이지 않으면서도 거래의 유효성은 검증할 수 있게 해주는 Zero Knowledge Proof [2] 기술을 활용하고자 한다. 
 
-[1] Feige, Uriel, Amos Fiat, and Adi Shamir. "Zero-knowledge proofs of identity." Journal of cryptology 1.2 (1988): 77-94.
+[1] Fang, Xi, et al. "Smart grid—The new and improved power grid: A survey." IEEE communications surveys & tutorials 14.4 (2011): 944-980.
 
-[2] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
+[2] Feige, Uriel, Amos Fiat, and Adi Shamir. "Zero-knowledge proofs of identity." Journal of cryptology 1.2 (1988): 77-94.
 
-[3] 스마트 그리드 - https://blog.kepco.co.kr/1532
+[3] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
 
 [4] 스마트 그리드 시장 활성화 - http://www.bloter.net/archives/72049
 
