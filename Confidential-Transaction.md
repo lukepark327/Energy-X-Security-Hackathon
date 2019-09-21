@@ -1,9 +1,12 @@
 # Research
 
+## zk-ERC20
+https://github.com/Onther-Tech/zk-ERC20
+
 ## ZoKratews
 https://github.com/Zokrates/ZoKrates
 
-## zkERC20
+## zkERC20-spec
 https://github.com/ethereum/EIPs/issues/1724
 
 ## zkDai
