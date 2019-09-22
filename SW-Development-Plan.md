@@ -18,7 +18,7 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * Uniswap을 이용한 P2P 거래 조율: 사재기 방지, 시장 급변 방지
   
 #### 실시간 데이터 분석 및 전달
-* Relay: 빠른 Tps(Transaction-per-seconds)를 가진 PoA(Proof-of-Authority) Blockchain을 운용해 실시간 데이터 분석 및 전달 달성; Relay를 통해 Public Blockchain에 결과를 등록함으로써 무결성 훼손 방지
+* Plasma solution: 빠른 Tps(Transaction-per-seconds)를 가진 PoA(Proof-of-Authority) Blockchain을 운용해 실시간 데이터 분석 및 전달 달성; Plasma  통해 Public Blockchain에 결과를 등록함으로써 무결성 훼손 방지
 * PPDL을 위한 별도의 Blockchain과 relay를 통해 소통 가능
 
 #### 능동적 서비스로의 전환
