@@ -80,6 +80,22 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * 활용 대상 데이터는 제한이 없으나 확보 가능한 데이터이어야 함
 * 데이터 분석을 통해 얻을 수 있는 결과와 이를 활용한 아이디어에 대해 상세히 기술할 것
 
+### 생태계 
+![system](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/system.png)
+
+### 시스템 구조도
+
+### Plasma Chain
+
+### Privacy Preserving Deep Learning
+![ppdl](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/ppdl.png)
+
+### Relay
+
+### Uniswap
+
+### 시뮬레이션
+
 ## 🚩 예상 결과 (서비스)
 * 제안 SW개발을 실행하여 얻을 수 있는 예상 결과물 (서비스 등)에 대해 구체적으로 기술할 것 (A4 2 페이지 이내)
 
