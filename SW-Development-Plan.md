@@ -81,9 +81,9 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * 데이터 분석을 통해 얻을 수 있는 결과와 이를 활용한 아이디어에 대해 상세히 기술할 것
 
 ### 생태계 
-![system](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/system.png)
 
 ### 시스템 구조도
+![system](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/system.png)
 
 ### Plasma Chain
 
