@@ -94,6 +94,14 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 
 ### Uniswap
 
+#### Eth to Token
+<!--주로 생산자와 소비자 간의 거래-->
+![e2t](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/uniswap_e2t.png)
+
+#### Token to Token
+<!--지역별(마이크로 그리드) 잉여 전력 거래 가능-->
+![t2t](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/uniswap_t2t.png)
+
 ### 시뮬레이션
 
 ## 🚩 예상 결과 (서비스)
