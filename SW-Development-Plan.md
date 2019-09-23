@@ -28,6 +28,8 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 ## 🚩 제안 개요
 * 제안 SW의 전체적인 내용을 쉽게 이해할 수 있도록 작성할 것 (A4 1 페이지 이내)
 
+![service](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/service.png)
+
   스마트 그리드 기술은 스마트 시티 건설을 위한 핵심 요소다. 스마트 그리드 기술 등장과 전력망에 대한 데이터 분석 기술이 더해져 전기사용량과 공급량을 예측하고 ESS에 에너지를 저장하는 등 보다 효율적으로 에너지를 활용하는 것이 가능해졌다. 소비자는 수요가 공급에 비해 적은 시간대를 파악해 저렴하게 전기를 사용할 수 있고 공급자는 수집된 실시간 전력 사용량 정보에 기반해 전력 수요를 미리 예측할 수 있다. 
   
   중앙 주체가 전력망을 단독 독점하는 폐쇄적인 형태와 달리 스마트 그리드에서는 전력 거래에 대한 정보가 중앙서버에 저장되지 않고 분산되므로 프로슈머의 개인정보가 노출되기 쉽다. 악성 사용자가 프로슈머의 컴퓨터를 해킹해 전력단가에 대한 정보를 위조하고 실제 단가와의 차익을 챙겨갈 수 있다. 
@@ -80,17 +82,17 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * 활용 대상 데이터는 제한이 없으나 확보 가능한 데이터이어야 함
 * 데이터 분석을 통해 얻을 수 있는 결과와 이를 활용한 아이디어에 대해 상세히 기술할 것
 
-### 생태계 
-
 ### 시스템 구조도
-![system](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/system.png)
+![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
 
 ### Plasma Chain
+![plasma](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/plasma.png)
 
 ### Privacy Preserving Deep Learning
 ![ppdl](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/ppdl.png)
 
 ### Relay
+![detail](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/detail.png)
 
 ### Uniswap
 
