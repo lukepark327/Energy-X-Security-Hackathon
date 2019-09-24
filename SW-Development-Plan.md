@@ -68,6 +68,21 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * 활용 대상 데이터는 제한이 없으나 확보 가능한 데이터이어야 함
 * 데이터 분석을 통해 얻을 수 있는 결과와 이를 활용한 아이디어에 대해 상세히 기술할 것
 
+
+### 시스템 구조도
+![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
+
+### Plasma Chain
+![plasma](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/plasma.png)
+
+### Privacy Preserving Deep Learning
+![ppdl](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/ppdl.png)
+
+PPDL(Privacy-Preserving Deep Learning)은 딥러닝 모델을 분산 환경에서 학습하고 추론할 수 있는 모델이다. PPDL을 이용해 네트워크의 참여자들은 서로 데이터를 공개하지 않고도 공통의 인공 신경망 모델을 학습시킬 수 있다. 연합 학습(FL, Federated Learning)이라고도 하는 이 기술은 한 주체가 데이터를 수집해 모델을 학습시키는 방식이 아니라, 각 데이터가 저장된 곳으로 모델을 전송한다. 모델을 전송하는 주체를 서버(server), 모델을 받아 훈련을 수행하는 주체를 클라이언트(client)라 하자. 또한 전송되는 최초의 모델을 '마스터 모델'이라고 하자. 클라이언트는 마스터 모델을 전송받아 저마다의 데이터로 학습하고, 업데이트된 가중치를 서버로 전송한다. 서버는 업데이트 내역을 모아 마스터 모델을 업데이트한다. 이를 반복하면서 정확도를 높인다. 본 과정에서 데이터는 전혀 외부에 노출되지 않으므로 클라이언트 개개인의 데이터 프라이버시를 보장할 수 있다[16]. 
+
+그러나 클라이언트-서버 구조는 본 시스템이 표명하는 탈중앙화 구조에 반한다. 따라서 PPDL을 
+
+
 <!--
 - (전력 데이터, 날씨 정보 등 예측에 쓰이는 데이터)
 - 수요 예측, 가격 예측, 전력 공급망 효율 등
@@ -96,20 +111,6 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
   - 항목: 기온, 습도, 기압, 지면온도, 강수량, 풍향, 풍속, 일조
 
 
-### 시스템 구조도
-![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
-
-### Plasma Chain
-![plasma](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/plasma.png)
-
-### Privacy Preserving Deep Learning
-![ppdl](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/ppdl.png)
-
-PPDL(Privacy-Preserving Deep Learning)은 딥러닝 모델을 분산 환경에서 학습하고 추론할 수 있는 모델이다. PPDL을 이용해 네트워크의 참여자들은 서로 데이터를 공개하지 않고도 공통의 인공 신경망 모델을 학습시킬 수 있다. 연합 학습(FL, Federated Learning)이라고도 하는 이 기술은 한 주체가 데이터를 수집해 모델을 학습시키는 방식이 아니라, 모델을 각 데이터가 저장된 곳으로 보낸다.
-
-모델을 전송하는 주체를 서버(server), 모델을 받아 훈련을 수행하는 주체를 클라이언트(client)라 하자. 또한 전송되는 최초의 모델을 '마스터 모델'이라고 하자. 클라이언트는 마스터 모델을 전송받아 저마다의 데이터로 학습하고, 업데이트된 가중치를 서버로 전송한다. 서버는 업데이트 내역을 모아 마스터 모델을 업데이트한다. 본 과정을 반복하면서 정확도를 높인다. 한편 데이터는 전혀 외부에 노출되지 않으므로 데이터 프라이버시를 보장할 수 있다[16]. 
-
-그러나 클라이언트-서버 구조는 본 시스템이 표명하는 탈중앙화 구조에 반한다. 따라서 
 
 ### Relay
 ![detail](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/detail.png)
@@ -210,7 +211,7 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [7] uniswap
 
-[8] PPDL
+[8] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
 
 [9] 박재용, "스마트 그리드, 전력 효율관리인가 전력 민영화 출발인가”, http://www.newstof.com/news/articleView.html?idxno=1111
 
@@ -227,3 +228,5 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 [15] http://www.bloter.net/archives/72049
 
 [16] http://www.hani.co.kr/arti/science/science_general/887030.html
+
+[17] DaiMoN: A Decentralized Artificial Intelligence Model Network
