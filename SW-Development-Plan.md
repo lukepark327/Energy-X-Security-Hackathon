@@ -87,8 +87,13 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 
 피크전력 데이터
   - 15분 단위 과거 피크전력 및 예측 피크전력 데이터
-  - 과거: https://apilink.kt.co.kr/base/getPeakElectricMn15
-  - 예측: https://apilink.kt.co.kr/base/getExpectPeakElectricMn15
+  - 과거 데이터 링크: https://apilink.kt.co.kr/base/getPeakElectricMn15
+  - 예측 데이터 링크: https://apilink.kt.co.kr/base/getExpectPeakElectricMn15
+
+#### 기상자료개방포털 데이터
+기상 데이터 (https://data.kma.go.kr/cmmn/main.do)
+  - 1시간 단위 기상 지역 별 기상 정보
+  - 항목: 기온, 습도, 기압, 지면온도, 강수량, 풍향, 풍속, 일조
 
 
 ### 시스템 구조도
