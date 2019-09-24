@@ -73,6 +73,24 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 - 수요 예측, 가격 예측, 전력 공급망 효율 등
 -->
 
+#### 전력거래소 공개 데이터
+전력시장 정보 (https://www.kpx.or.kr/www/selectBbsNttList.do?key=19&bbsNo=133)
+  - 기준용량가격, 지역 및 시간대별 용량가격계수
+  - 기간: 2015년부터 2019까지
+
+전력계통 운영정보 (https://www.kpx.or.kr/www/selectPoiGgtsList.do?key=20&gonggaeTypeSeq=3)
+  - 5분 단위 전력 수요 예측 데이터
+  - 기간: 2015년 8월부터 2019년 7월까지
+  
+#### KT giga energy trade 공개 데이터
+공개 API (가이드: https://apilink.kt.co.kr/apiInfo/mvInfoView.do?apiSpcNo=489&apiNo=6738)
+
+피크전력 데이터
+  - 15분 단위 과거 피크전력 및 예측 피크전력 데이터
+  - 과거: https://apilink.kt.co.kr/base/getPeakElectricMn15
+  - 예측: https://apilink.kt.co.kr/base/getExpectPeakElectricMn15
+
+
 ### 시스템 구조도
 ![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
 
