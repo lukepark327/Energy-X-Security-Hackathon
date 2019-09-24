@@ -69,6 +69,7 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 * 데이터 분석을 통해 얻을 수 있는 결과와 이를 활용한 아이디어에 대해 상세히 기술할 것
 
 
+
 ### 시스템 구조도
 ![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
 
@@ -83,7 +84,28 @@ PPDL(Privacy-Preserving Deep Learning)은 딥러닝 모델을 분산 환경에�
 
 PPDL을 P2P와 같은 분산 환경에서 구성하더라도 정확도를 향상시키는 방향으로 학습할 수 있음이 이미 연구되어 있다[17]. 본 SW에서는 PPDL과 블록체인을 결부시켜, 악의적인 참여자(비잔틴 노드, Byzantine Node)가 일부 포함되더라도 내구성을 가지는 구조인 PPDL-chain을 제안한다. PPDL-chain을 이용해 네트워크의 참여자들은 서로 데이터를 공개하지 않고도 공통의 인공 신경망 모델을 학습시킬 수 있으며, 심지어 서로 신뢰할 수 없고 서버가 없는(serverless) 환경에서도 정확도 높은 모델을 도출할 수 있다.
 
-현재 PPDL-chain 구현체는 PBFT(Practical Byzantine Fault Tolerance) 합의 알고리즘을 따르도록 제작되었다. PBFT 합의 알고리즘은 다음 일련의 절차로 구성된 라운드(round)를 단위로 블록을 생성한다.
+가령 '전력 수요 예측 서비스'를 제공하기 위해서는 기준용량가격 그리고 지역 및 시간대별 용량가격계수 등의 전력시장 정보, 피크전력 데이터, 지역별 기상 정보 등의 방대한 과거 자료가 필요하다. 다음은 거시적 관점에서의 전력 수요 예측 서비스를 제공하기 위한 활용 대상 데이터의 예시와 그에 관한 상세이다.
+
+#### 전력거래소 - 전력시장 정보
+* 출처: https://www.kpx.or.kr/www/selectBbsNttList.do?key=19&bbsNo=133
+* 2015년부터 2019년까지의 기준용량가격, 지역 및 시간대별 용량가격계수
+  
+#### KT giga energy trade - 피크전력 데이터
+* 공개 API를 통한 데이터 제공
+* 공개 API 가이드: https://apilink.kt.co.kr/apiInfo/mvInfoView.do?apiSpcNo=489&apiNo=6738
+* 15분 단위
+* 과거 피크전력 및 예측 피크전력 데이터 제공
+  * 과거 데이터 링크: https://apilink.kt.co.kr/base/getPeakElectricMn15
+  * 예측 데이터 링크: https://apilink.kt.co.kr/base/getExpectPeakElectricMn15
+
+#### 기상자료개방포털 - 기상 데이터
+* 출처: https://data.kma.go.kr/cmmn/main.do
+* 1시간 단위
+* 기온, 습도, 기압, 지면온도, 강수량, 풍향, 풍속, 일조 항목의 지역별 기상 정보
+
+그러나 보다 미시적으로, 아파트 단지나 가구별 전력 수요 예측 서비스를 제공하기 위해서는 생활에 밀접한 개인정보가 필요하므로 필연적인 데이터 프라이버시 문제가 발생한다. 뿐만 아니라 방대한 데이터를 저장할 스토리지(storage), 이를 학습시키기 위한 강력한 컴퓨팅 자원이 요구된다. 본 상황에서 PPDL-chain을 활용하면 데이터 프라이버시를 보장하면서도 정확도 높은 예측 서비스를 서버가 없는 분산 환경상에서 구축할 수 있다.
+
+현재 PPDL-chain 구현체는 PBFT(Practical Byzantine Fault Tolerance)를 차용한 합의 알고리즘을 따르도록 제작되었다. PBFT 합의 알고리즘은 다음 일련의 절차로 구성된 라운드(round)를 단위로 블록을 생성한다.
 
 1. 네트워크 참여자 중 리더(Leader 혹은 Primary) 노드를 선출한다.
 2. 리더가 클라이언트들의 요청을 수집해 정렬하고, 각각의 요청을 실행 결과와 함께 다른 노드들에게 전파한다.
@@ -92,45 +114,14 @@ PPDL을 P2P와 같은 분산 환경에서 구성하더라도 정확도를 향상
 
 ![pbft](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/pbft.png)
 
-위 과정이 끝나면 모든 노드들은 정족수 이상이 동의한, 즉 합의를 이룬 같은 데이터를 가진다[18].
+위 과정이 끝나면 모든 노드들은 정족수 이상이 동의해 합의를 이룬 같은 데이터를 가진다[18][19]. 유사하게, PPDL-chain은 다음 일련의 절차로 구성된 라운드를 단위로 블록을 생성한다.
 
+1. 네트워크 참여자 중 리더(Leader 혹은 Primary) 노드를 선출한다. 리더 노드가 가진 모델이 '마스터 모델'로서 기능한다.
+2. 리더의 마스터 모델을 다른 노드들에게 전파한다.
+3. 각 노드들은 저마다의 학습 데이터를 가지고 전파받은 모델을 학습한다. 이후 업데이트 정보를 전파한다.
+4. 각 노드들의 저마다의 업데이트 내역을 모아 마스터 모델을 업데이트한다.
 
-
-참여하는 노드들은 저마다의 학습 데이터를 가지고 있다.
-
-
-
-
-
-
-<!--
-- (전력 데이터, 날씨 정보 등 예측에 쓰이는 데이터)
-- 수요 예측, 가격 예측, 전력 공급망 효율 등
--->
-
-#### 전력거래소 공개 데이터
-전력시장 정보 (https://www.kpx.or.kr/www/selectBbsNttList.do?key=19&bbsNo=133)
-  - 기준용량가격, 지역 및 시간대별 용량가격계수
-  - 기간: 2015년부터 2019까지
-
-전력계통 운영정보 (https://www.kpx.or.kr/www/selectPoiGgtsList.do?key=20&gonggaeTypeSeq=3)
-  - 5분 단위 전력 수요 예측 데이터
-  - 기간: 2015년 8월부터 2019년 7월까지
-  
-#### KT giga energy trade 공개 데이터
-공개 API (가이드: https://apilink.kt.co.kr/apiInfo/mvInfoView.do?apiSpcNo=489&apiNo=6738)
-
-피크전력 데이터
-  - 15분 단위 과거 피크전력 및 예측 피크전력 데이터
-  - 과거 데이터 링크: https://apilink.kt.co.kr/base/getPeakElectricMn15
-  - 예측 데이터 링크: https://apilink.kt.co.kr/base/getExpectPeakElectricMn15
-
-#### 기상자료개방포털 데이터
-기상 데이터 (https://data.kma.go.kr/cmmn/main.do)
-  - 1시간 단위 기상 지역 별 기상 정보
-  - 항목: 기온, 습도, 기압, 지면온도, 강수량, 풍향, 풍속, 일조
-
-
+인공 신경망 모델의 정보는 블록에 기록되며, 본 정보를 활용해 추론/예측 서비스를 제공한다.
 
 ### Relay
 ![detail](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/detail.png)
@@ -241,7 +232,7 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [12] 에너지경제연구원, "블록체인, 에너지 부문 기회와 과제"
 
-[13] 강두순, “英, 블록체인 기술로 에너지 직거래…현실이 된 `반값 전기료`”. https://www.mk.co.kr/news/economy/view/2018/06/384275/
+[13] 강두순, “英, 블록체인 기술로 에너지 직거래…현실이 된 '반값 전기료'”. https://www.mk.co.kr/news/economy/view/2018/06/384275/
 
 [14] http://www.solartodaymag.com/news/articleView.html?idxno=6329
 
@@ -251,4 +242,6 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [17] DaiMoN: A Decentralized Artificial Intelligence Model Network
 
-[18] https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
+[18] https://www.usenix.org/legacy/events/nsdi09/tech/full_papers/wester/wester_html/index.html
+
+[19] https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
