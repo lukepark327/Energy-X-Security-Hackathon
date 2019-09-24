@@ -105,6 +105,8 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 ### Privacy Preserving Deep Learning
 ![ppdl](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/ppdl.png)
 
+PPDL(Privacy-Preserving Deep Learning)은 딥러닝 모델을 분산 환경에서 학습하고 추론할 수 있는 모델이다. PPDL을 이용해 네트워크의 참여자들은 서로 데이터를 공개하지 않고도 공통의 인공 신경망 모델을 학습시킬 수 있다. 연합 학습(FL, Federated Learning)이라고도 하는 이 기술은 한 주체가 데이터를 수집해 모델을 학습시키는 방식이 아니라, 모델을 각 데이터가 저장된 곳으로 보낸다. 모델을 전송하는 주체를 서버(server), 모델을 받아 훈련을 수행하는 주체를 클라이언트(client)라 하자. 클라이언트는 저마다의 데이터로 모델을 학습하고 업데이트된 가중치를 서버로 전송한다. 서버는 업데이트 내역을 모아 모델을 최종 업데이트한다. 데이터는 전혀 외부에 노출되지 않으므로 데이터 프라이버시를 보장할 수 있다[16]. 
+
 ### Relay
 ![detail](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/detail.png)
 
@@ -219,3 +221,5 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 [14] http://www.solartodaymag.com/news/articleView.html?idxno=6329
 
 [15] http://www.bloter.net/archives/72049
+
+[16] http://www.hani.co.kr/arti/science/science_general/887030.html
