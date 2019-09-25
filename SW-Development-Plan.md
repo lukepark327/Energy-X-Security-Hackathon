@@ -70,11 +70,25 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 
 
 
+
 ### 시스템 구조도
 ![overview](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/overview.png)
 
+
+
+
+
 ### Plasma Chain
+
+플라즈마(plasma)는 블록체인 트랜잭션 데이터를 분산 처리해 초당 트랜잭션 처리량(TPS)를 높이는 아이디어이다. 주 체인(Main-chain, Root-chain)인 이더리움의 경우 TPS에 한계가 존재하므로 네트워크 참여자들이 실시간으로 정보를 상호 교환하기 어렵다. 주 체인과 별개로 동작하는 다른 블록체인인 플라즈마 체인(Plasma-chain)을 구성하고, 주 체인의 트랜잭션을 분담해 처리한다면 TPS를 높일 수 있다. 본 SW에서는 실시간 정보 처리 및 빠른 P2P 거래, 지연 없는 서비스 제공을 위해 플라즈마 체인 구성을 채택했다.
+
 ![plasma](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/plasma.png)
+
+플라즈마 체인의 트랜잭션들은 일장 주기를 기준으로 주 체인에 등록(commit)된다. 트랜잭션들을 리프 노드(leaf node)로 하는 머클 트리(merkle tree)를 구성하고, 머클 루트 값을 주 체인인 이더리움의 스마트 컨트랙트에 등록한다.
+
+플라즈마 체인에 참여하고자 하는 사용자들은 주 체인에 ETH를 예치하고, 이에 대응되는 수량의 플라즈마 체인 통화인 PETH를 받는다. 만일 플라즈마 체인에서 나가고자 한다면 PETH를 반환하고, 이에 대응되는 수량의 ETH를 회수할 수 있다. 이 예치된 ETH를 Security Deposit이라 부르는데, 누군가가 플라즈마 체인 상에서 악의적인 행동을 취하면 플라즈마 체인의 관리자 권한 혹은 거버넌스를 통해 당사자의 Security Deposit을 삭감할 수 있다[24].
+
+본 구현체는 권위 증명(PoA, Proof-of-Authority) 합의 알고리즘에 기반한 플라즈마 체인을 통해 높은 TPS를 달성하면서도, 작업 증명(PoW, Proof-of-Work) 합의 알고리즘을 사용하는 퍼블릭 블록체인인 이더리움을 주 체인으로 하여 투명성을 보장한다.
 
 ### Privacy Preserving Deep Learning
 
@@ -135,9 +149,11 @@ PPDL-chain은 주 기능을 담당하는 플라즈마 체인과는 별개의 독
 
 한 명의 릴레이어에게 중앙화되는 문제를 해결하기 위해 복수의 릴레이어를 허용하고, 서로 경쟁하도록 이코노미를 설계해 분산화 정도를 훼손하지 않는다. 이는 실제 블록체인 참여자들이 채굴(mining)을 위해 경쟁하는 것과 유사한 개념이다. 또한 만일 본 시스템의 규모가 커지고 PPDL-chain의 활용 정도가 높아진다면 다중서명지갑(multi-sig wallet)을 활용한 연합 페그(Federated Peg)라는 구조를 채용해 탈중앙화 정도를 강화하고, 나아가 코스모스(Cosmos), 폴카닷(Polkadot) 처럼 릴레이어들의 합의를 위한 별도의 블록체인을 운영해 관리할 방침이다[22][23].
 
-현재 PPDL-chain은 PBFT와 유사한 합의 알고리즘을 사용하므로, 동일한 블록 번호를 가지는 블록이 동시에 발생하는 분기 및 재구성(reorg, reorganization) 상황은 발생하지 않는다. 그러나 합의 알고리즘의 변경 등의 이유로 재구성이 발생할 가능성이 있다면, 이를 반영할 수 있어야만 올바른 정보를 릴레이할 수 있다. 따라서 재구성 합의 과정 역시 스마트 컨트랙트로 구현해 적용해야 한다. 이에 이더리움의 블록체인 재구성 합의 과정을 스마트 컨트랙트로 구현해 유효성을 보였다[20].
+현재 PPDL-chain은 PBFT와 유사한 합의 알고리즘을 사용하므로, 동일한 블록 번호를 가지는 블록이 동시에 발생하는 분기 및 재구성(reorg, reorganization) 상황은 발생하지 않는다. 그러나 합의 알고리즘의 변경 등의 이유로 재구성이 발생할 가능성이 있다면, 이를 반영할 수 있어야만 올바른 정보를 릴레이할 수 있다. 따라서 재구성 합의 과정 역시 스마트 컨트랙트로 구현해 적용해야 한다. 이에 이더리움의 블록체인 재구성 합의 과정을 스마트 컨트랙트로 구현해 유효함을 보였다[20].
 
 ### Uniswap
+
+잉여전력은 풀로 
 
 #### Eth to Token
 <!--주로 생산자와 소비자 간의 거래-->
@@ -264,3 +280,5 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 [22] https://cosmos.network
 
 [23] https://polkadot.network
+
+[24] https://medium.com/onther-tech/plasma-101-lets-scale-with-cryptoeconomics-ee0c9fac4989
