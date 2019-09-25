@@ -63,7 +63,7 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 
 ![plasma](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/plasma.png)
 
-플라즈마 체인의 트랜잭션들은 일장 주기를 기준으로 주 체인에 등록(commit)된다. 트랜잭션들을 리프 노드(leaf node)로 하는 머클 트리(merkle tree)를 구성하고, 머클 루트 값을 주 체인인 이더리움의 스마트 컨트랙트에 등록한다.
+플라즈마 체인의 트랜잭션들은 일정 주기를 기준으로 주 체인에 등록(commit)된다. 트랜잭션들을 리프 노드(leaf node)로 하는 머클 트리(merkle tree)를 구성하고, 머클 루트 값을 주 체인인 이더리움의 스마트 컨트랙트에 등록한다.
 
 플라즈마 체인에 참여하고자 하는 사용자들은 주 체인에 ETH를 예치하고, 이에 대응되는 수량의 플라즈마 체인 통화인 PETH를 받는다. 만일 플라즈마 체인에서 나가고자 한다면 PETH를 반환하고, 이에 대응되는 수량의 ETH를 회수할 수 있다. 이 예치된 ETH를 Security Deposit이라 부르는데, 누군가가 플라즈마 체인 상에서 악의적인 행동을 취하면 플라즈마 체인의 관리자 권한 혹은 거버넌스를 통해 당사자의 Security Deposit을 삭감할 수 있다[24].
 
@@ -134,7 +134,7 @@ PPDL-chain은 주 기능을 담당하는 플라즈마 체인과는 별개의 독
 
 유니스왑(Uniswap)은 유동성이 없는 환경에서도 거래가 가능하게 하는, ETH와 ERC20 간의 토큰 거래를 제공하는 프로토콜이다. 기존의 P2P 거래에는 구매자와 판매자가 반드시 한 쌍 존재해야 하고, 이들의 희망 매매가격이 일치하는 경우에만 거래가 성사되었다. 그러나 유니스왑에서는 유동성 공급자와 구매자만이 존재한다. 구매자는 ETH를 토큰으로 교환하거나, 토큰을 ETH로 교환하는 행위를 판매자 없이도 행할 수 있다.
 
-이는 풀(pool)이라는 개념 덕분인데, ETH 풀은 ETH를 확보하고 있는 스마트 컨트랙트이며 토큰 풀은 토큰을 확보하고 있는 스마트 컨트랙트로 간주 가능하다. 만일 ETH를 토큰으로 교환하고자 하는 구매자는 ETH 풀에 ETH를 전송하고, 프로토콜에 의해 계산된 양의 토큰을 받는다. 반대의 경우도 유사하다.
+이는 풀(pool)이라는 개념 덕분인데, ETH 풀은 ETH를 확보하고 있는 스마트 컨트랙트이며 토큰 풀은 토큰을 확보하고 있는 스마트 컨트랙트로 간주 가능하다. ETH를 토큰으로 교환하고자 하는 구매자는 ETH 풀에 ETH를 전송하고, 프로토콜에 의해 계산된 양의 토큰을 받는다. 반대의 경우도 유사하다.
 
 유동성 공급자는 거래로 인해 발생할 수 있는 풀의 불균형을 조율한다. 그 대가로 유동성 공급자는 0.3%의 거래 수수료를 취한다. 단, 아래의 그림들은 이해를 돕기 위해 거래 수수료를 제외한 값을 기재했다.
 
@@ -175,7 +175,7 @@ PPDL-chain은 주 기능을 담당하는 플라즈마 체인과는 별개의 독
 
 ### P2P 에너지 거래
 
-블록체인을 통해 중앙화된 주체 없이 공급자ᆞ소비자ᆞ프로슈머 간 에너지 직거래가 가능하다. P2P(Peer-to-Peer) 에너지 거래 방식을 통해 사용자들은 합리적인 가격에 전기를 구매해 사용할 수 있고, 태양광 발전을 통해 에너지를 생산하는 프로슈머라면 남는 전기를 이웃에게 팔 수 있다. 또한 소규모 전력자원을 모아서 거래하고 현황, 실적을 체계적으로 관리하는 '전력 중개 사업' 등 신사업 파생을 지원한다.
+블록체인을 통해 중앙 주체 없이 공급자ᆞ소비자ᆞ프로슈머 간 에너지 직거래가 가능하다. P2P(Peer-to-Peer) 에너지 거래 방식을 통해 사용자들은 합리적인 가격에 전기를 구매해 사용할 수 있고, 태양광 발전을 통해 에너지를 생산하는 프로슈머라면 남는 전기를 이웃에게 팔 수 있다. 또한 소규모 전력자원을 모아서 거래하고 현황, 실적을 체계적으로 관리하는 '전력 중개 사업' 등 신사업 파생을 지원한다.
 
 본 시스템은 영지식증명으로부터 블록체인상 거래에서 내역이 공개됨으로써 야기되는 개인정보 유출 문제를 방지해 보다 안전한 서비스를 제공한다. 또한 유니스왑 프로토콜을 통해 시장 교란 행위를 방지하고 사용자 개입없이 자동으로 수요를 조정하는 자동화 수요반응자원(Automated Demand Response)을 달성한다.
 
@@ -196,7 +196,7 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 본 시스템이 제공하는 실시간 전력망 통합관제 시스템, P2P 에너지 거래, 서비스로서의 추론, 그리고 서비스로서의 스마트 그리드를 통해 다음과 같은 효과를 기대할 수 있다.
 
-### 거래 플랫폼의 활성화
+### 에너지 거래 플랫폼의 활성화
 
 본 시스템의 거래는 zk-ERC20로 명명하는 익명화 토큰에 기반한다. 영지식증명 기술로 거래 참여자와 내역을 숨겨 거래를 완전히 익명화할 수 있다. 또한 본 시스템은 PPDL(Privacy-Preserving Deep Learning)을 적용해 종래의 스마트 전력 계량기 등으로부터 발생할 수 있는 데이터 프라이버시 문제를 해결한다. 이를 통해 공급자와 소비자 양 측의 프라이버시를 보장함으로써 개인정보 유출의 우려를 잠식, 마켓 참여의 장벽을 크게 낮춘다.
 
@@ -223,13 +223,13 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [3] KEPCO, https://home.kepco.co.kr/
 
-[4] http://www.energy-news.co.kr/news/articleView.html?idxno=60328
+[4] 권준범, "한전, 'KEPCO Open MG' 프로젝트 추진", http://www.energy-news.co.kr/news/articleView.html?idxno=60328
 
 [5] Feige, Uriel, Amos Fiat, and Adi Shamir. "Zero-knowledge proofs of identity." Journal of cryptology 1.2 (1988): 77-94.
 
-[6] zk-ERC20
+[6] zac-williamson, "zk-ERC20", https://github.com/ethereum/EIPs/issues/1724
 
-[7] uniswap
+[7] Uniswap, http://uniswap.io
 
 [8] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
 
@@ -241,7 +241,7 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [12] 에너지경제연구원, "블록체인, 에너지 부문 기회와 과제"
 
-[13] 강두순, “英, 블록체인 기술로 에너지 직거래…현실이 된 '반값 전기료'”. https://www.mk.co.kr/news/economy/view/2018/06/384275/
+[13] 강두순, "英, 블록체인 기술로 에너지 직거래…현실이 된 '반값 전기료'", https://www.mk.co.kr/news/economy/view/2018/06/384275/
 
 [14] http://www.solartodaymag.com/news/articleView.html?idxno=6329
 
@@ -249,18 +249,18 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [16] http://www.hani.co.kr/arti/science/science_general/887030.html
 
-[17] DaiMoN: A Decentralized Artificial Intelligence Model Network
+[17] Teerapittayanon, Surat & Kung, H., "DaiMoN: A Decentralized Artificial Intelligence Model Network", 2019.
 
-[18] https://www.usenix.org/legacy/events/nsdi09/tech/full_papers/wester/wester_html/index.html
+[18] Benjamin Wester, James Cowling, et al., "Tolerating latency in replicated state machines through client speculation", In Proceedings of the 6th USENIX symposium on Networked systems design and implementation (NSDI'09), 2009.
 
-[19] https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
+[19] PBFT, https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
 
-[20] https://github.com/twodude/eth-ghost-sol
+[20] eth-ghost-sol, https://github.com/twodude/eth-ghost-sol
 
-[21] https://medium.com/cryptronics/blockchain-interoperability-moving-assets-across-chains-e5203357d949
+[21] Blockchain interoperability, https://medium.com/cryptronics/blockchain-interoperability-moving-assets-across-chains-e5203357d949
 
-[22] https://cosmos.network
+[22] Cosmos, https://cosmos.network
 
-[23] https://polkadot.network
+[23] Polkadot, https://polkadot.network
 
-[24] https://medium.com/onther-tech/plasma-101-lets-scale-with-cryptoeconomics-ee0c9fac4989
+[24] Plasma, https://medium.com/onther-tech/plasma-101-lets-scale-with-cryptoeconomics-ee0c9fac4989
