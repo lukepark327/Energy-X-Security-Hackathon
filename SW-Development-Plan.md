@@ -3,7 +3,7 @@
 
 ## 🚩 SW 명
 
-Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
+AOMG: Anonymous Open Micro Grid (익명화된 오픈 마이크로 그리드)
 
 ## 🚩 제안 개요
 * 제안 SW의 전체적인 내용을 쉽게 이해할 수 있도록 작성할 것 (A4 1 페이지 이내)
@@ -14,7 +14,7 @@ Enhanced Open MG: 한전 오픈 마이크로그리드 개선안
 
 ![service](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/service.png)
 
-제안하는 'Enhanced Open MG'에서는 익명화 기술인 영지식증명(zero-knowledge proof) 기술에 기반한 토큰(token) zk-ERC20을 제시하고, 거래를 완전히 익명화해 개인정보를 보호하면서도 블록체인상에서 거래가 성사될 수 있도록 했다[5][6]. 또한 거래량에 따라 자동으로 가격이 책정되는(APR) 유니스왑(uniswap) 프로토콜을 사용해 시장 교란 행위를 방지하고 높은 유동성을 확보했다[7].
+제안하는 'AOMG: Anonymous Open Micro Grid'에서는 익명화 기술인 영지식증명(zero-knowledge proof) 기술에 기반한 토큰(token) zk-ERC20을 제시하고, 거래를 완전히 익명화해 개인정보를 보호하면서도 블록체인상에서 거래가 성사될 수 있도록 했다[5][6]. 또한 거래량에 따라 자동으로 가격이 책정되는(APR) 유니스왑(uniswap) 프로토콜을 사용해 시장 교란 행위를 방지하고 높은 유동성을 확보했다[7].
 
 한편 수요 예측 등 스마트 그리드의 지능형 기능 운용에는 데이터 수집이 필수적이다. 이를 위해 참여자 간에 데이터를 공개하지 않으면서도 공동의 모델을 학습시킬 수 있는 탈중앙화된 모델 학습 방식(PPDL, Privacy-Preserving Deep Learning)을 구현했다[8]. 이로부터 데이터 프라이버시 문제를 해결하는 동시에 실시간 수요 예측을 가능하게 한다. 나아가 단순히 데이터 열람만 가능한 현재의 수동적인 형태에서, 서비스로서의 추론 기능(Inference-as-a-service)을 제공함으로써 능동적인 가치 창출을 가능하게 한다. 이로부터 전력산업에서 신시장을 창출하고 경제의 혁신성장에 기여하고자 한다.
 
