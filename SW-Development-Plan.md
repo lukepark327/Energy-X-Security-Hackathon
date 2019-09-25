@@ -223,13 +223,13 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [3] KEPCO, https://home.kepco.co.kr/
 
-[4] http://www.energy-news.co.kr/news/articleView.html?idxno=60328
+[4] 권준범, "한전, 'KEPCO Open MG' 프로젝트 추진", http://www.energy-news.co.kr/news/articleView.html?idxno=60328
 
 [5] Feige, Uriel, Amos Fiat, and Adi Shamir. "Zero-knowledge proofs of identity." Journal of cryptology 1.2 (1988): 77-94.
 
-[6] zk-ERC20
+[6] zac-williamson, "zk-ERC20", https://github.com/ethereum/EIPs/issues/1724
 
-[7] uniswap
+[7] Uniswap, http://uniswap.io
 
 [8] Shokri, Reza, and Vitaly Shmatikov. "Privacy-preserving deep learning." Proceedings of the 22nd ACM SIGSAC conference on computer and communications security. ACM, 2015.
 
@@ -241,7 +241,7 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [12] 에너지경제연구원, "블록체인, 에너지 부문 기회와 과제"
 
-[13] 강두순, “英, 블록체인 기술로 에너지 직거래…현실이 된 '반값 전기료'”. https://www.mk.co.kr/news/economy/view/2018/06/384275/
+[13] 강두순, "英, 블록체인 기술로 에너지 직거래…현실이 된 '반값 전기료'", https://www.mk.co.kr/news/economy/view/2018/06/384275/
 
 [14] http://www.solartodaymag.com/news/articleView.html?idxno=6329
 
@@ -249,18 +249,18 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 
 [16] http://www.hani.co.kr/arti/science/science_general/887030.html
 
-[17] DaiMoN: A Decentralized Artificial Intelligence Model Network
+[17] Teerapittayanon, Surat & Kung, H., "DaiMoN: A Decentralized Artificial Intelligence Model Network", 2019.
 
-[18] https://www.usenix.org/legacy/events/nsdi09/tech/full_papers/wester/wester_html/index.html
+[18] Benjamin Wester, James Cowling, et al., "Tolerating latency in replicated state machines through client speculation", In Proceedings of the 6th USENIX symposium on Networked systems design and implementation (NSDI'09), 2009.
 
-[19] https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
+[19] PBFT, https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
 
-[20] https://github.com/twodude/eth-ghost-sol
+[20] eth-ghost-sol, https://github.com/twodude/eth-ghost-sol
 
-[21] https://medium.com/cryptronics/blockchain-interoperability-moving-assets-across-chains-e5203357d949
+[21] Blockchain interoperability, https://medium.com/cryptronics/blockchain-interoperability-moving-assets-across-chains-e5203357d949
 
-[22] https://cosmos.network
+[22] Cosmos, https://cosmos.network
 
-[23] https://polkadot.network
+[23] Polkadot, https://polkadot.network
 
-[24] https://medium.com/onther-tech/plasma-101-lets-scale-with-cryptoeconomics-ee0c9fac4989
+[24] Plasma, https://medium.com/onther-tech/plasma-101-lets-scale-with-cryptoeconomics-ee0c9fac4989
