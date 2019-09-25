@@ -123,8 +123,19 @@ PPDL을 P2P와 같은 분산 환경에서 구성하더라도 정확도를 향상
 
 인공 신경망 모델의 정보는 블록에 기록되며, 본 정보를 활용해 추론/예측 서비스를 제공한다.
 
+추후 사용자 수의 증대, 보다 복잡한 모델의 수요가 많아지는 등 확장성이 요구된다면 방향성 비순환 그래프(Directed Acyclic Graph) 기반의 블록체인 구조와 새로운 합의 알고리즘을 도입해 개선할 방침이다.
+
 ### Relay
+
+PPDL-chain은 주 기능을 담당하는 플라즈마 체인과는 별개의 독립적인 블록체인이므로, PPDL-chain의 정보를 활용하기 위해 플라즈마 체인과 상호운용성을 제공할 장치가 필요하다. 본 SW에서는 릴레이(relay) 구조를 차용했다. 릴레이는 타 블록체인의 읽기와 검증을 수행하는 블록체인상에 구현된 시스템이다[21].
+
 ![detail](https://github.com/twodude/Energy-X-Security-Hackathon/blob/master/images/detail.png)
+
+릴레이에서는 릴레이어(relayer)가 PPDL-chain의 블록 헤더를 읽어 그 정보를 플라즈마 체인 상의 스마트 컨트랙트에 지속적으로 제출한다. 블록 번호, 블록 해시, 타임스탬프 등 블록 헤더를 구성하는 인자들의 유효성을 스마트 컨트랙트를 통해 검증하고, 유효성이 입증된 블록 헤더만을 수용한다. 즉, PPDL-chain의 라이트 클라이언트(light client)를 플라즈마 체인의 스마트 컨트랙트를 통해 구동하는 것과 유사한 개념이다.
+
+한 명의 릴레이어에게 중앙화되는 문제를 해결하기 위해 복수의 릴레이어를 허용하고, 서로 경쟁하도록 이코노미를 설계해 분산화 정도를 훼손하지 않는다. 이는 실제 블록체인 참여자들이 채굴(mining)을 위해 경쟁하는 것과 유사한 개념이다. 또한 만일 본 시스템의 규모가 커지고 PPDL-chain의 활용 정도가 높아진다면 다중서명지갑(multi-sig wallet)을 활용한 연합 페그(Federated Peg)라는 구조를 채용해 탈중앙화 정도를 강화하고, 나아가 코스모스(Cosmos), 폴카닷(Polkadot) 처럼 릴레이어들의 합의를 위한 별도의 블록체인을 운영해 관리할 방침이다[22][23].
+
+현재 PPDL-chain은 PBFT와 유사한 합의 알고리즘을 사용하므로, 동일한 블록 번호를 가지는 블록이 동시에 발생하는 분기 및 재구성(reorg, reorganization) 상황은 발생하지 않는다. 그러나 합의 알고리즘의 변경 등의 이유로 재구성이 발생할 가능성이 있다면, 이를 반영할 수 있어야만 올바른 정보를 릴레이할 수 있다. 따라서 재구성 합의 과정 역시 스마트 컨트랙트로 구현해 적용해야 한다. 이에 이더리움의 블록체인 재구성 합의 과정을 스마트 컨트랙트로 구현해 유효성을 보였다[20].
 
 ### Uniswap
 
@@ -245,3 +256,11 @@ PoA(Proof of Authority) 기반의 높은 TPS(Transaction Per Second)를 가지�
 [18] https://www.usenix.org/legacy/events/nsdi09/tech/full_papers/wester/wester_html/index.html
 
 [19] https://blog.theloop.co.kr/2017/06/21/bft-기반-합의-알고리즘/
+
+[20] https://github.com/twodude/eth-ghost-sol
+
+[21] https://medium.com/cryptronics/blockchain-interoperability-moving-assets-across-chains-e5203357d949
+
+[22] https://cosmos.network
+
+[23] https://polkadot.network
