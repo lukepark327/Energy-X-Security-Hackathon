@@ -1,4 +1,6 @@
 /plasma/plasma-core/go-ethereum-1.9.6
 /plasma/tmp
+/plasma/plasma-core/keystore
+/plasma/plasma-core/geth
 .DS_Store
 

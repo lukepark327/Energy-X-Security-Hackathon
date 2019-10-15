@@ -1,0 +1,1 @@
+go-ethereum-1.9.6/build/bin/geth --datadir . --networkid 950327 --rpc --rpcport "8081" --rpccorsdomain "*" --port 30303 --nodiscover --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --allow-insecure-unlock console

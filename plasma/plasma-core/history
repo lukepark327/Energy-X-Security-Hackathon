@@ -1,0 +1,13 @@
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance()
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.start()
+eth.mining()
+eth.mining
+miner.stop()
+miner.start()
+miner.stop()
+eth.blockNumber
