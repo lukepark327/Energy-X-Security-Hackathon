@@ -1,2 +1,7 @@
 *.ipynb
+/code/plasma/plasma-core/go-ethereum-1.9.6
+/code/plasma/tmp
+/code/plasma/plasma-core/keystore
+/code/plasma/plasma-core/geth
 .DS_Store
+
