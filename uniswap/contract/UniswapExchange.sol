@@ -55,6 +55,7 @@ contract UniswapExchange {
     }
 
     /// EXTERNAL FUNCTIONS
+    // CAUSION: need to execute approve(this_contract_address, amount) before execute this function due to token.transferFrom()
     function initializeExchange(uint256 _tokenAmount) external payable {
         // you can initialize exchange only at first time
         require(invariant == 0 && totalShares == 0);
