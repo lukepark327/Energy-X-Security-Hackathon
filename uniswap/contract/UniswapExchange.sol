@@ -38,7 +38,7 @@ contract UniswapExchange {
 
     /// CONSTRUCTOR
     // set token & factory
-    constructor(address _tokenAddress) public {
+    constructor(address _tokenAddress) public payable {
         // set token
         tokenAddress = _tokenAddress;
         token = ERC20Interface(tokenAddress);
