@@ -43,7 +43,7 @@ class FLModel:
         pyplot.show()
 
 if __name__ == "__main__":
-    df = pd.read_pickle('data/df.pkl')
+    df = pd.read_pickle('../../data/df.pkl')
     X = df.drop('power(MW)', axis=1).values
     y = df['power(MW)'].values
     x_train, x_test,y_train, y_test =  train_test_split(X, y, train_size = 0.8)
