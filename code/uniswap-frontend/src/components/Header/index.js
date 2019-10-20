@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { Link } from '../../theme'
 import Web3Status from '../Web3Status'
+import OffCanvas from '../OffCanvas'
 import { darken } from 'polished'
 
 const HeaderFrame = styled.div`
@@ -12,10 +13,18 @@ const HeaderFrame = styled.div`
   width: 100%;
 `
 
-const HeaderElement = styled.div`
+const HeaderElement_4_6 = styled.div`
   margin: 1.25rem;
   display: flex;
-  min-width: 0;
+  width: 66%;
+  display: flex;
+  align-items: center;
+`
+
+const HeaderElement_1_6 = styled.div`
+  margin: 1.25rem;
+  display: flex;
+  width: 17%;
   display: flex;
   align-items: center;
 `
@@ -30,6 +39,7 @@ const Nod = styled.span`
 `
 
 const Title = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
 
@@ -50,28 +60,38 @@ const Title = styled.div`
       color: ${({ theme }) => darken(0.1, theme.wisteriaPurple)};
     }
   }
+
+  #wrapper {
+    width: 100%;
+    text-align: center;
+  }
 `
 
 export default function Header() {
   return (
     <HeaderFrame>
-      <HeaderElement>
+      <HeaderElement_1_6>
+        <OffCanvas />
+      </HeaderElement_1_6>
+      <HeaderElement_4_6>
         <Title>
-          <Nod>
-            <Link id="link" href="https://uniswap.io">
-              <span role="img" aria-label="unicorn">
-                🦄{'  '}
-              </span>
+          <div id="wrapper">
+            <Nod>
+              <Link id="link" href="lynx.snu.ac.kr:3000">
+                <span role="img" aria-label="unicorn">
+                  🦄{'  '}
+                </span>
+              </Link>
+            </Nod>
+            <Link id="link" href="lynx.snu.ac.kr:3000">
+	      <h1 id="title">AOMG</h1>
             </Link>
-          </Nod>
-          <Link id="link" href="https://uniswap.io">
-            <h1 id="title">Uniswap</h1>
-          </Link>
+	  </div>
         </Title>
-      </HeaderElement>
-      <HeaderElement>
+      </HeaderElement_4_6>
+      <HeaderElement_1_6>
         <Web3Status />
-      </HeaderElement>
+      </HeaderElement_1_6>
     </HeaderFrame>
   )
 }
