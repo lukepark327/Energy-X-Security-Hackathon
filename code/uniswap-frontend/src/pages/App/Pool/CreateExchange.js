@@ -6,12 +6,12 @@ import { ethers } from 'ethers'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import ReactGA from 'react-ga'
-import { Button } from '../../theme'
-import AddressInputPanel from '../../components/AddressInputPanel'
-import OversizedPanel from '../../components/OversizedPanel'
-import { useFactoryContract } from '../../hooks'
-import { useTokenDetails } from '../../contexts/Tokens'
-import { useTransactionAdder } from '../../contexts/Transactions'
+import { Button } from '../../../theme'
+import AddressInputPanel from '../../../components/AddressInputPanel'
+import OversizedPanel from '../../../components/OversizedPanel'
+import { useFactoryContract } from '../../../hooks'
+import { useTokenDetails } from '../../../contexts/Tokens'
+import { useTransactionAdder } from '../../../contexts/Transactions'
 
 const SummaryPanel = styled.div`
   ${({ theme }) => theme.flexColumnNoWrap};

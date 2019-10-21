@@ -3,11 +3,11 @@ import { withRouter, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
-import OversizedPanel from '../../components/OversizedPanel'
-import { ReactComponent as Dropdown } from '../../assets/images/dropdown-blue.svg'
+import OversizedPanel from '../../../components/OversizedPanel'
+import { ReactComponent as Dropdown } from '../../../assets/images/dropdown-blue.svg'
 
-import Modal from '../../components/Modal'
-import { useBodyKeyDown } from '../../hooks'
+import Modal from '../../../components/Modal'
+import { useBodyKeyDown } from '../../../hooks'
 
 import { lighten } from 'polished'
 

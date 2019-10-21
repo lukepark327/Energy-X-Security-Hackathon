@@ -2,12 +2,12 @@ import React, { Suspense, lazy } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
-import Web3ReactManager from '../components/Web3ReactManager'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Web3ReactManager from '../../components/Web3ReactManager'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
-import NavigationTabs from '../components/NavigationTabs'
-import { isAddress, getAllQueryParams } from '../utils'
+import NavigationTabs from '../../components/NavigationTabs'
+import { isAddress, getAllQueryParams } from '../../utils'
 
 const Swap = lazy(() => import('./Swap'))
 const Send = lazy(() => import('./Send'))
@@ -51,14 +51,6 @@ const Body = styled.div`
 export default function App() {
   const params = getAllQueryParams()
   return (
-    <>
-      <Suspense fallback={null}>
-        <AppWrapper>
-          <HeaderWrapper>
-            <Header />
-          </HeaderWrapper>
-          <BodyWrapper>
-            <Body>
               <Web3ReactManager>
                 <BrowserRouter>
                   <NavigationTabs />
@@ -111,13 +103,5 @@ export default function App() {
                   </Suspense>
                 </BrowserRouter>
               </Web3ReactManager>
-            </Body>
-          </BodyWrapper>
-          <FooterWrapper>
-            <Footer />
-          </FooterWrapper>
-        </AppWrapper>
-      </Suspense>
-    </>
   )
 }
