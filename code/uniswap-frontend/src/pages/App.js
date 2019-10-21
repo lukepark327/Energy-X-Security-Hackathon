@@ -16,7 +16,7 @@ const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  height: 100vh;
+  height: 100%;
 `
 
 const HeaderWrapper = styled.div`
@@ -27,7 +27,7 @@ const HeaderWrapper = styled.div`
 `
 const FooterWrapper = styled.div`
   width: 100%;
-  min-height: 30px;
+  height: 60px;
   align-self: flex-end;
 `
 
@@ -39,6 +39,7 @@ const BodyWrapper = styled.div`
   align-items: center;
   flex: 1;
   overflow: auto;
+  height: calc(100% - 160px);
 `
 
 const Body = styled.div`
