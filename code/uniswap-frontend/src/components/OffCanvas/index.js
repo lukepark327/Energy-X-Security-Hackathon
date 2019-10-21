@@ -5,7 +5,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -52,7 +51,7 @@ export default function OffCanvas() {
     >
       <List>
         {['Dashboard', 'Uniswap'].map((text, index) => (
-	  <Link to={'./' + text} style={{ color: 'inherit', textDecoration: 'none' }}>
+	  <Link key={text} to={'./' + text} style={{ color: 'inherit', textDecoration: 'none' }}>
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <Dashboard /> : <SwapHoriz />}</ListItemIcon>
             <ListItemText primary={text} />

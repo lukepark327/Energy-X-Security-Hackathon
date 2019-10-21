@@ -1,10 +1,7 @@
 import React, { Suspense, lazy } from 'react'
-import styled from 'styled-components'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import Web3ReactManager from '../../components/Web3ReactManager'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 
 import NavigationTabs from '../../components/NavigationTabs'
 import { isAddress, getAllQueryParams } from '../../utils'

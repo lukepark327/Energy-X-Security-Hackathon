@@ -1,17 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import Chart from './Chart.js'
-import CustomCardContents from './CustomCardContents.js'
+import Prediction from './Prediction.js'
+import Price from './Price.js'
 
-import { makeStyles } from '@material-ui/core/styles';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { green, orange } from '@material-ui/core/colors';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
-
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 
 const DashboardWrapper = styled.div`
   #root {
@@ -24,12 +19,14 @@ const DashboardWrapper = styled.div`
   }
 
   #customcard {
-    padding: 8px 8px 0 8px;
+    height: 28vh;
+    padding: 3vh;
     background-color: ${({ theme }) => theme.concreteGray};
+    vertical-align: middle;
   }
 
   #customcardForChart {
-    padding: 8px 20px 0 0;
+    padding: 25px;
     background-color: ${({ theme }) => theme.concreteGray};
   }
 `
@@ -42,25 +39,19 @@ export default function Dashboard() {
         <Grid item xs={6}>
           <Grid item xs={12}>
 	  <Card id="customcard">
-            <CardContent>
-              <CustomCardContents />
-	    </CardContent>
+            <Prediction />
 	  </Card>
 	  </Grid>
 	  <Divider id="divider" />
           <Grid item xs={12}>
 	  <Card id="customcard">
-            <CardContent>
-              <CustomCardContents />
-	    </CardContent>
+              <Price />
 	  </Card>
 	  </Grid>
         </Grid>
         <Grid item xs={6}>
 	  <Card id="customcardForChart">
-            <CardContent>
               <Chart />
-	    </CardContent>
 	  </Card>
         </Grid>
       </Grid>

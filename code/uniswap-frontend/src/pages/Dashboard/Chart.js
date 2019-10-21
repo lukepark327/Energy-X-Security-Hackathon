@@ -32,6 +32,7 @@ const ChartWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 65vh;
   justify-content: flex-start;
   align-items: center;
   flex: 1;
@@ -44,7 +45,7 @@ export default class Chart extends PureComponent {
   render() {
     return (
       <ChartWrapper>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height="100%">
       <LineChart
         data={data}
         margin={{

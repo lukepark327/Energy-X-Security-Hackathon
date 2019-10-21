@@ -1,13 +1,9 @@
 import React, { Suspense, lazy } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Web3ReactManager from '../components/Web3ReactManager'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
-import NavigationTabs from '../components/NavigationTabs'
-import { isAddress, getAllQueryParams } from '../utils'
 
 const Uniswap = lazy(() => import('./Uniswap'))
 const Dashboard = lazy(() => import('./Dashboard'))
@@ -48,7 +44,6 @@ const Body = styled.div`
 `
 
 export default function App() {
-  const params = getAllQueryParams()
   return (
     <>
     <BrowserRouter>
