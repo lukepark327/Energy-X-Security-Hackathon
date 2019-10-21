@@ -79,7 +79,7 @@ export default function Header() {
             <Nod>
               <Link id="link" href="lynx.snu.ac.kr:3000">
                 <span role="img" aria-label="unicorn">
-                  🦄{'  '}
+                  ⚡️{'  '}
                 </span>
               </Link>
             </Nod>
