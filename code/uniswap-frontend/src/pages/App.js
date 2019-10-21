@@ -10,6 +10,7 @@ import NavigationTabs from '../components/NavigationTabs'
 import { isAddress, getAllQueryParams } from '../utils'
 
 const Uniswap = lazy(() => import('./Uniswap'))
+const Dashboard = lazy(() => import('./Dashboard'))
 
 const AppWrapper = styled.div`
   display: flex;
@@ -46,10 +47,11 @@ const Body = styled.div`
   /* margin: 0 1.25rem 1.25rem 1.25rem; */
 `
 
-export default function Dashboard() {
+export default function App() {
   const params = getAllQueryParams()
   return (
     <>
+    <BrowserRouter>
       <Suspense fallback={null}>
         <AppWrapper>
           <HeaderWrapper>
@@ -57,7 +59,13 @@ export default function Dashboard() {
           </HeaderWrapper>
           <BodyWrapper>
             <Body>
-	      <Uniswap />
+	      <Switch>
+	      <div>
+	        <Route exact path="/" component={Dashboard} />
+	        <Route exact path="/Dashboard" component={Dashboard} />
+	        <Route exact path="/Uniswap" component={Uniswap} />
+	      </div>
+	      </Switch>
             </Body>
           </BodyWrapper>
           <FooterWrapper>
@@ -65,6 +73,7 @@ export default function Dashboard() {
           </FooterWrapper>
         </AppWrapper>
       </Suspense>
+    </BrowserRouter>
     </>
   )
 }

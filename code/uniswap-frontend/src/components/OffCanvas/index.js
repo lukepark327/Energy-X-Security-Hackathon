@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,15 +11,14 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import Dashboard from '@material-ui/icons/Dashboard';
+import Settings from '@material-ui/icons/Settings';
+import SwapHoriz from '@material-ui/icons/SwapHoriz';
 
 const useStyles = makeStyles({
   list: {
     width: 250,
-  },
-  fullList: {
-    width: 'auto',
   },
 });
 
@@ -51,45 +51,20 @@ export default function OffCanvas() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Dashboard', 'Uniswap'].map((text, index) => (
+	  <Link to={'./' + text} style={{ color: 'inherit', textDecoration: 'none' }}>
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <Dashboard /> : <SwapHoriz />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
+	  </Link>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Settings'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
-  const fullList = side => (
-    <div
-      className={classes.fullList}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <Settings /> : <Settings />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
