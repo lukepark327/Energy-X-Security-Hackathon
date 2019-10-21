@@ -42,9 +42,8 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
-  max-width: 35rem;
   width: 90%;
-  /* margin: 0 1.25rem 1.25rem 1.25rem; */
+  align-items: center;
 `
 
 export default function App() {
@@ -60,11 +59,9 @@ export default function App() {
           <BodyWrapper>
             <Body>
 	      <Switch>
-	      <div>
 	        <Route exact path="/" component={Dashboard} />
 	        <Route exact path="/Dashboard" component={Dashboard} />
 	        <Route exact path="/Uniswap" component={Uniswap} />
-	      </div>
 	      </Switch>
             </Body>
           </BodyWrapper>
