@@ -17,6 +17,7 @@ import NetworkOnlyConnector from './NetworkOnlyConnector'
 import InjectedConnector from './InjectedConnector'
 
 import './i18n'
+import './style.css'
 
 if (process.env.NODE_ENV === 'production') {
   ReactGA.initialize('UA-128182339-1')

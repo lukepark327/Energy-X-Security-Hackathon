@@ -43,18 +43,15 @@ const Title = styled.div`
   display: flex;
   align-items: center;
 
-  :hover {
-    cursor: pointer;
-  }
-
   #link {
     text-decoration-color: ${({ theme }) => theme.UniswapPink};
   }
 
   #title {
+    font-family: 'Nunito', sans-serif;
     display: inline;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 900;
     color: ${({ theme }) => theme.wisteriaPurple};
     :hover {
       color: ${({ theme }) => darken(0.1, theme.wisteriaPurple)};
@@ -64,6 +61,7 @@ const Title = styled.div`
   #wrapper {
     width: 100%;
     text-align: center;
+    font-size: 2rem;
   }
 `
 
