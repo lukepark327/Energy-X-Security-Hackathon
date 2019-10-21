@@ -22,6 +22,10 @@ const useStyles = makeStyles({
   },
 });
 
+const MenuIconWrapper = styled.div`
+  cursor: pointer;               
+`
+
 export default function OffCanvas() {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -95,9 +99,9 @@ export default function OffCanvas() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}>
+      <MenuIconWrapper onClick={toggleDrawer('left', true)}>
         <MenuIcon />
-      </Button>
+      </MenuIconWrapper>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
