@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 import NavigationTabs from '../components/NavigationTabs'
 import { isAddress, getAllQueryParams } from '../utils'
 
-const App = lazy(() => import('./App'))
+const Uniswap = lazy(() => import('./Uniswap'))
 
 const AppWrapper = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ export default function Dashboard() {
           </HeaderWrapper>
           <BodyWrapper>
             <Body>
-	      <App />
+	      <Uniswap />
             </Body>
           </BodyWrapper>
           <FooterWrapper>

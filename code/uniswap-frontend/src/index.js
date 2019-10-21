@@ -12,7 +12,7 @@ import BalancesContextProvider from './contexts/Balances'
 import AllowancesContextProvider from './contexts/Allowances'
 import AllBalancesContextProvider from './contexts/AllBalances'
 
-import Dashboard from './pages/Dashboard'
+import App from './pages/App'
 import NetworkOnlyConnector from './NetworkOnlyConnector'
 import InjectedConnector from './InjectedConnector'
 
@@ -65,7 +65,7 @@ ReactDOM.render(
       <ThemeProvider>
         <>
           <GlobalStyle />
-          <Dashboard />
+          <App />
         </>
       </ThemeProvider>
     </ContextProviders>
