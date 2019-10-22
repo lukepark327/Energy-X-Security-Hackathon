@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import MonetizationOn from '@material-ui/icons/MonetizationOn';
+
 const CustomCardContentsWrapper = styled.div`
   #title {
     color: ${({ theme }) => theme.charcoalBlack};
@@ -25,7 +27,7 @@ export default function Price() {
 	<CustomCardContentsWrapper>
 	  <Typography component="div">
             <Box fontSize="h6.fontSize" letterSpacing={6} m={1} id="title">
-              Current Price
+              <MonetizationOn /> Current Price
             </Box>
             <Box textAlign="right" fontWeight="fontWeightBold" fontSize="h3.fontSize" m={1} id="bodytext">
               0.00ETH/W
