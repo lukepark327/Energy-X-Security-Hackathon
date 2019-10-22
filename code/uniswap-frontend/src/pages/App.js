@@ -18,6 +18,7 @@ const AppWrapper = styled.div`
 const HeaderWrapper = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
+  height: 100px;
   justify-content: space-between;
   align-items: center;
 `
