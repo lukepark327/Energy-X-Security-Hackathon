@@ -13,9 +13,9 @@ def day_list(x):
     return day_list
 
 # Read data, selected columns only
-weather_df = pd.read_csv('data/weather20102018.csv', encoding='EUC_KR', usecols=['일시', '기온(°C)', '강수량(mm)', '풍속(m/s)', '풍향(16방위)', '습도(%)', '적설(cm)'])
+weather_df = pd.read_csv('weather20102018.csv', encoding='EUC_KR', usecols=['일시', '기온(°C)', '강수량(mm)', '풍속(m/s)', '풍향(16방위)', '습도(%)', '적설(cm)'])
 weather_df = weather_df.fillna(0)
-power_df = pd.read_csv('data/power20102019.csv', encoding='EUC_KR')
+power_df = pd.read_csv('power20102019.csv', encoding='EUC_KR')
 
 # String date to Datetime
 weather_df = weather_df.rename(columns={'일시': 'Date'})
@@ -46,7 +46,7 @@ for i,row in df.iterrows():
 df = df.drop(['요일', 'Date'],axis=1)
 
 # Save data
-df.to_pickle('data/df.pkl')
+df.to_pickle('df.pkl')
 
 # Load data (check)
-pd.read_pickle('data/df.pkl')
+pd.read_pickle('df.pkl')
