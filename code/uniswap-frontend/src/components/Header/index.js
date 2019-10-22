@@ -13,7 +13,7 @@ const HeaderFrame = styled.div`
   width: 100%;
 `
 
-const HeaderElement_4_6 = styled.div`
+const HeaderElement8 = styled.div`
   margin: 1.25rem;
   display: flex;
   width: 66%;
@@ -21,7 +21,7 @@ const HeaderElement_4_6 = styled.div`
   align-items: center;
 `
 
-const HeaderElement_1_6 = styled.div`
+const HeaderElement2 = styled.div`
   margin: 1.25rem;
   display: flex;
   width: 17%;
@@ -68,10 +68,10 @@ const Title = styled.div`
 export default function Header() {
   return (
     <HeaderFrame>
-      <HeaderElement_1_6>
+      <HeaderElement2>
         <OffCanvas />
-      </HeaderElement_1_6>
-      <HeaderElement_4_6>
+      </HeaderElement2>
+      <HeaderElement8>
         <Title>
           <div id="wrapper">
             <Nod>
@@ -86,10 +86,10 @@ export default function Header() {
             </Link>
 	  </div>
         </Title>
-      </HeaderElement_4_6>
-      <HeaderElement_1_6>
+      </HeaderElement8>
+      <HeaderElement2>
         <Web3Status />
-      </HeaderElement_1_6>
+      </HeaderElement2>
     </HeaderFrame>
   )
 }
