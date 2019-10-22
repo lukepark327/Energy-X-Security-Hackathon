@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis|Montserrat|Noto+Sans+KR|Nunito|Righteous&display=swap');
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+html, body, body > #root, .MuiDrawer-root { 
+  overflow-x: hidden; 
+  overflow-y: hidden;
+}
