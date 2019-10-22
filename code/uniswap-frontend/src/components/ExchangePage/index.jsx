@@ -620,8 +620,10 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
       }
     }
 
-    const estimatedGasLimit = await estimate(...args, { value })
-    method(...args, { value, gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN) }).then(response => {
+    /* Preventing `Error: gas required exceeds allowance or always failing transaction` @Yeonjae */
+    //const estimatedGasLimit = await estimate(...args, { value })
+    //method(...args, { value, gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN) }).then(response => {
+    method(...args, { value, gasLimit: 750000 }).then(response => {
       addTransaction(response)
     })
   }
