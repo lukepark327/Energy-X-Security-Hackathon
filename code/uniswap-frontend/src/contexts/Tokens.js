@@ -438,6 +438,14 @@ const INITIAL_TOKENS_CONTEXT = {
       [EXCHANGE_ADDRESS]: '0xaE76c84C9262Cdb9abc0C2c8888e62Db8E22A0bF'
     }
   },
+  3: {
+    '0xcc83c961e569a172265a6a4dfde0cc64f29c77f0': {
+      [NAME]: 'TestToken',
+      [SYMBOL]: 'TEST',
+      [DECIMALS]: 1,
+      [EXCHANGE_ADDRESS]: '0xaE68895584dd113F4C3f16099D05Bee65a593038'
+    }
+  },
   4: {
     '0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa': {
       [NAME]: 'Dai',
