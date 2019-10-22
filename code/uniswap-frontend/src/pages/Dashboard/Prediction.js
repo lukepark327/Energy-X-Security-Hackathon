@@ -20,6 +20,11 @@ const CustomCardContentsWrapper = styled.div`
     background-color: ${({ theme }) => theme.uniswapPink};
     color: ${({ theme }) => theme.white};
   }
+
+  #unit { 
+    font-size: 2.5vh;
+    font-weight: normal;
+  }
 `
 
 export default function Prediction() {
@@ -29,8 +34,8 @@ export default function Prediction() {
             <Box fontSize="h6.fontSize" letterSpacing={6} m={1} id="title">
               <OfflineBolt /> Prediction Result
             </Box>
-            <Box textAlign="right" fontWeight="fontWeightBold" fontSize="h3.fontSize" m={1} id="bodytext">
-              30.5MW
+            <Box textAlign="right" fontWeight="fontWeightBold" fontSize="6vh" m={1} id="bodytext">
+              30.5 <span id="unit">MW</span>
             </Box>
 	  </Typography>
 	</CustomCardContentsWrapper>

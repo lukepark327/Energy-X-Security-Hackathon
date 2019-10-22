@@ -20,6 +20,11 @@ const CustomCardContentsWrapper = styled.div`
     background-color: ${({ theme }) => theme.uniswapPink};
     color: ${({ theme }) => theme.white};
   }
+
+  #unit {
+    font-size: 2.5vh;
+    font-weight: normal;
+  }
 `
 
 export default function Price() {
@@ -29,8 +34,8 @@ export default function Price() {
             <Box fontSize="h6.fontSize" letterSpacing={6} m={1} id="title">
               <MonetizationOn /> Current Price
             </Box>
-            <Box textAlign="right" fontWeight="fontWeightBold" fontSize="h3.fontSize" m={1} id="bodytext">
-              0.00ETH/W
+            <Box textAlign="right" fontWeight="fontWeightBold" fontSize="6vh" m={1} id="bodytext">
+              0.0 <span id="unit">ETH/W</span>
             </Box>
 	  </Typography>
 	</CustomCardContentsWrapper>
