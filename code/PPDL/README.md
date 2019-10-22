@@ -1,4 +1,4 @@
-### privacy-preserving deep learning을 예시 모델 
+### privacy-preserving deep learning의 예시 모델 
 
 1. 개요: 과거 전력 수요 정보 및 기상 데이터를 활용해 전력 수요를 예측
 
