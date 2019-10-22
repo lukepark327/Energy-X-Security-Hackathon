@@ -75,13 +75,13 @@ export default function Header() {
         <Title>
           <div id="wrapper">
             <Nod>
-              <Link id="link" href="lynx.snu.ac.kr:3000">
+              <Link id="link" href="/">
                 <span role="img" aria-label="unicorn">
                   ⚡️{'  '}
                 </span>
               </Link>
             </Nod>
-            <Link id="link" href="lynx.snu.ac.kr:3000">
+            <Link id="link" href="/">
 	      <h1 id="title">AOMG</h1>
             </Link>
 	  </div>
