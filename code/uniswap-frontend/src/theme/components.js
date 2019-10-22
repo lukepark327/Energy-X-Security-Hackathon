@@ -32,7 +32,6 @@ export const Button = styled.button.attrs(({ warning, theme }) => ({
 `
 
 export const Link = styled.a.attrs({
-  target: '_blank',
   rel: 'noopener noreferrer'
 })`
   text-decoration: none;
