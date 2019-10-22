@@ -36,7 +36,7 @@ export default function Dashboard() {
     <DashboardWrapper>
     <div id="root">
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Grid item xs={12}>
 	  <Card id="customcard">
             <Prediction />
@@ -49,7 +49,7 @@ export default function Dashboard() {
 	  </Card>
 	  </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={8}>
 	  <Card id="customcardForChart">
               <Chart />
 	  </Card>
