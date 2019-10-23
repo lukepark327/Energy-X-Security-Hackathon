@@ -552,7 +552,7 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
     const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
 
     let method, args, value
-    if (independentField === INPUT) {
+    if (independentField === INPUT || independentField === OUTPUT) {
       ReactGA.event({
         category: `${swapType}`,
         action: sending ? 'TransferInput' : 'SwapInput'
@@ -560,19 +560,22 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
 
       if (swapType === ETH_TO_TOKEN) {
         //estimate = sending ? contract.estimate.ethToTokenTransferInput : contract.estimate.ethToTokenSwapInput
-        method = sending ? contract.ethToTokenTransferInput : contract.ethToTokenSwapInput
+        //method = sending ? contract.ethToTokenTransferInput : contract.ethToTokenSwapInput
+        method = sending ? contract.ethToTokenPayment : contract.ethToTokenSwap
         args = sending ? [dependentValueMinumum, deadline, recipient.address] : [dependentValueMinumum, deadline]
         value = independentValueParsed
       } else if (swapType === TOKEN_TO_ETH) {
         //estimate = sending ? contract.estimate.tokenToEthTransferInput : contract.estimate.tokenToEthSwapInput
-        method = sending ? contract.tokenToEthTransferInput : contract.tokenToEthSwapInput
+        //method = sending ? contract.tokenToEthTransferInput : contract.tokenToEthSwapInput
+        method = sending ? contract.tokenToEthPayment : contract.tokenToEthSwap
         args = sending
           ? [independentValueParsed, dependentValueMinumum, deadline, recipient.address]
           : [independentValueParsed, dependentValueMinumum, deadline]
         value = ethers.constants.Zero
       } else if (swapType === TOKEN_TO_TOKEN) {
         //estimate = sending ? contract.estimate.tokenToTokenTransferInput : contract.estimate.tokenToTokenSwapInput
-        method = sending ? contract.tokenToTokenTransferInput : contract.tokenToTokenSwapInput
+        //method = sending ? contract.tokenToTokenTransferInput : contract.tokenToTokenSwapInput
+        method = sending ? contract.tokenToTokenPayment : contract.tokenToTokenSwap
         args = sending
           ? [
               independentValueParsed,
@@ -585,7 +588,7 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
           : [independentValueParsed, dependentValueMinumum, ethers.constants.One, deadline, outputCurrency]
         value = ethers.constants.Zero
       }
-    } else if (independentField === OUTPUT) {
+    } /*else if (independentField === OUTPUT) {
       ReactGA.event({
         category: `${swapType}`,
         action: sending ? 'TransferOutput' : 'SwapOutput'
@@ -618,11 +621,12 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
           : [independentValueParsed, dependentValueMaximum, ethers.constants.MaxUint256, deadline, outputCurrency]
         value = ethers.constants.Zero
       }
-    }
+    }*/
 
     /* Preventing `Error: gas required exceeds allowance or always failing transaction` @Yeonjae */
     //const estimatedGasLimit = await estimate(...args, { value })
     //method(...args, { value, gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN) }).then(response => {
+    console.log("args:",args)
     method(...args, { value, gasLimit: 750000 }).then(response => {
       addTransaction(response)
     })

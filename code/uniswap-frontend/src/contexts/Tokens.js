@@ -439,11 +439,11 @@ const INITIAL_TOKENS_CONTEXT = {
     }
   },
   3: {
-    '0xd324ff113e501a87a9e46f1a45dab4463bd14da2': {
+    '0xae8630822cfc9f5894dc834935a9af83d22fb0fb': {
       [NAME]: 'TestToken',
       [SYMBOL]: 'TEST',
       [DECIMALS]: 1,
-      [EXCHANGE_ADDRESS]: '0xdA9292311E09a9A39079fD18402f87741Da93A6c'
+      [EXCHANGE_ADDRESS]: '0x5D3360CFb57bE9eC02493A9787787324477ee5bb'
     }
   },
   4: {
