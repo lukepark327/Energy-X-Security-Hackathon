@@ -23,7 +23,7 @@ import { calculateGasMargin, amountFormatter } from '../../../utils'
 const ALLOWED_SLIPPAGE = ethers.utils.bigNumberify(200)
 
 // denominated in seconds
-const DEADLINE_FROM_NOW = 60 * 15
+//const DEADLINE_FROM_NOW = 60 * 15
 
 // denominated in bips
 const GAS_MARGIN = ethers.utils.bigNumberify(1000)
@@ -253,17 +253,17 @@ export default function RemoveLiquidity({ params }) {
       action: 'RemoveLiquidity'
     })
 
-    const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
+    //const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
 
-    const estimatedGasLimit = await exchange.estimate.removeLiquidity(
+    const estimatedGasLimit = await exchange.estimate.divestLiquidity(
       valueParsed,
       ethWithdrawnMin,
-      tokenWithdrawnMin,
-      deadline
+      tokenWithdrawnMin
+      //deadline
     )
 
     exchange
-      .removeLiquidity(valueParsed, ethWithdrawnMin, tokenWithdrawnMin, deadline, {
+      .divestLiquidity(valueParsed, ethWithdrawnMin, tokenWithdrawnMin, {
         gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN)
       })
       .then(response => {

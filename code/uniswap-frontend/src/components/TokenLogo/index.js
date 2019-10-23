@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import { ReactComponent as EthereumLogo } from '../../assets/images/ethereum-logo.svg'
 
-const TOKEN_ICON_API = address =>
-  `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
+//const TOKEN_ICON_API = address =>
+//  `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
 const BAD_IMAGES = {}
 
 const Image = styled.img`
@@ -34,12 +34,12 @@ export default function TokenLogo({ address, size = '1rem', ...rest }) {
   if (address === 'ETH') {
     return <StyledEthereumLogo size={size} />
   } else if (!error && !BAD_IMAGES[address]) {
-    path = TOKEN_ICON_API(address.toLowerCase())
+    //path = TOKEN_ICON_API(address.toLowerCase())
   } else {
     return (
       <Emoji {...rest} size={size}>
-        <span role="img" aria-label="Thinking">
-          🤔
+        <span role="img" aria-label="Lightening">
+          ⚡️
         </span>
       </Emoji>
     )

@@ -27,7 +27,7 @@ const OUTPUT = 1
 const ALLOWED_SLIPPAGE = ethers.utils.bigNumberify(200)
 
 // denominated in seconds
-const DEADLINE_FROM_NOW = 60 * 15
+//const DEADLINE_FROM_NOW = 60 * 15
 
 // denominated in bips
 const GAS_MARGIN = ethers.utils.bigNumberify(1000)
@@ -227,7 +227,7 @@ export default function AddLiquidity({ params }) {
   const [totalPoolTokens, setTotalPoolTokens] = useState()
   const fetchPoolTokens = useCallback(() => {
     if (exchangeContract) {
-      exchangeContract.totalSupply().then(totalSupply => {
+      exchangeContract.totalShares().then(totalSupply => {
         setTotalPoolTokens(totalSupply)
       })
     }
@@ -384,12 +384,12 @@ export default function AddLiquidity({ params }) {
       action: 'AddLiquidity'
     })
 
-    const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
+    //const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
 
-    const estimatedGasLimit = await exchangeContract.estimate.addLiquidity(
+    const estimatedGasLimit = await exchangeContract.estimate.investLiquidity(
       isNewExchange ? ethers.constants.Zero : liquidityTokensMin,
-      isNewExchange ? outputValueParsed : outputValueMax,
-      deadline,
+      //isNewExchange ? outputValueParsed : outputValueMax,
+      //deadline,
       {
         value: inputValueParsed
       }
@@ -398,10 +398,10 @@ export default function AddLiquidity({ params }) {
     const gasLimit = calculateGasMargin(estimatedGasLimit, GAS_MARGIN)
 
     exchangeContract
-      .addLiquidity(
+      .investLiquidity(
         isNewExchange ? ethers.constants.Zero : liquidityTokensMin,
-        isNewExchange ? outputValueParsed : outputValueMax,
-        deadline,
+        //isNewExchange ? outputValueParsed : outputValueMax,
+        //deadline,
         {
           value: inputValueParsed,
           gasLimit

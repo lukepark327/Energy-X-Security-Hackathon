@@ -7,6 +7,7 @@ import Price from './Price.js'
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import Web3ReactManager from '../../components/Web3ReactManager'
 
 const DashboardWrapper = styled.div`
   #root {
@@ -33,6 +34,7 @@ const DashboardWrapper = styled.div`
 
 export default function Dashboard() {
   return (
+    <Web3ReactManager>
     <DashboardWrapper>
     <div id="root">
       <Grid container spacing={3}>
@@ -57,6 +59,7 @@ export default function Dashboard() {
       </Grid>
     </div>
     </DashboardWrapper>
+    </Web3ReactManager>
   );
 }
 

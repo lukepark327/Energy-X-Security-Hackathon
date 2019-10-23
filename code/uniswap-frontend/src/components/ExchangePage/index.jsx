@@ -14,7 +14,7 @@ import AddressInputPanel from '../AddressInputPanel'
 import OversizedPanel from '../OversizedPanel'
 import TransactionDetails from '../TransactionDetails'
 import ArrowDown from '../../assets/svg/SVGArrowDown'
-import { amountFormatter, calculateGasMargin } from '../../utils'
+import { amountFormatter } from '../../utils'
 import { useExchangeContract } from '../../hooks'
 import { useTokenDetails } from '../../contexts/Tokens'
 import { useTransactionAdder } from '../../contexts/Transactions'
@@ -37,7 +37,7 @@ const TOKEN_ALLOWED_SLIPPAGE_DEFAULT = 100
 const DEADLINE_FROM_NOW = 60 * 15
 
 // % above the calculated gas cost that we actually send, denominated in bips
-const GAS_MARGIN = ethers.utils.bigNumberify(1000)
+//const GAS_MARGIN = ethers.utils.bigNumberify(1000)
 
 const DownArrowBackground = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -551,28 +551,31 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
   async function onSwap() {
     const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
 
-    let estimate, method, args, value
-    if (independentField === INPUT) {
+    let method, args, value
+    if (independentField === INPUT || independentField === OUTPUT) {
       ReactGA.event({
         category: `${swapType}`,
         action: sending ? 'TransferInput' : 'SwapInput'
       })
 
       if (swapType === ETH_TO_TOKEN) {
-        estimate = sending ? contract.estimate.ethToTokenTransferInput : contract.estimate.ethToTokenSwapInput
-        method = sending ? contract.ethToTokenTransferInput : contract.ethToTokenSwapInput
+        //estimate = sending ? contract.estimate.ethToTokenTransferInput : contract.estimate.ethToTokenSwapInput
+        //method = sending ? contract.ethToTokenTransferInput : contract.ethToTokenSwapInput
+        method = sending ? contract.ethToTokenPayment : contract.ethToTokenSwap
         args = sending ? [dependentValueMinumum, deadline, recipient.address] : [dependentValueMinumum, deadline]
         value = independentValueParsed
       } else if (swapType === TOKEN_TO_ETH) {
-        estimate = sending ? contract.estimate.tokenToEthTransferInput : contract.estimate.tokenToEthSwapInput
-        method = sending ? contract.tokenToEthTransferInput : contract.tokenToEthSwapInput
+        //estimate = sending ? contract.estimate.tokenToEthTransferInput : contract.estimate.tokenToEthSwapInput
+        //method = sending ? contract.tokenToEthTransferInput : contract.tokenToEthSwapInput
+        method = sending ? contract.tokenToEthPayment : contract.tokenToEthSwap
         args = sending
           ? [independentValueParsed, dependentValueMinumum, deadline, recipient.address]
           : [independentValueParsed, dependentValueMinumum, deadline]
         value = ethers.constants.Zero
       } else if (swapType === TOKEN_TO_TOKEN) {
-        estimate = sending ? contract.estimate.tokenToTokenTransferInput : contract.estimate.tokenToTokenSwapInput
-        method = sending ? contract.tokenToTokenTransferInput : contract.tokenToTokenSwapInput
+        //estimate = sending ? contract.estimate.tokenToTokenTransferInput : contract.estimate.tokenToTokenSwapInput
+        //method = sending ? contract.tokenToTokenTransferInput : contract.tokenToTokenSwapInput
+        method = sending ? contract.tokenToTokenPayment : contract.tokenToTokenSwap
         args = sending
           ? [
               independentValueParsed,
@@ -585,26 +588,26 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
           : [independentValueParsed, dependentValueMinumum, ethers.constants.One, deadline, outputCurrency]
         value = ethers.constants.Zero
       }
-    } else if (independentField === OUTPUT) {
+    } /*else if (independentField === OUTPUT) {
       ReactGA.event({
         category: `${swapType}`,
         action: sending ? 'TransferOutput' : 'SwapOutput'
       })
 
       if (swapType === ETH_TO_TOKEN) {
-        estimate = sending ? contract.estimate.ethToTokenTransferOutput : contract.estimate.ethToTokenSwapOutput
+        //estimate = sending ? contract.estimate.ethToTokenTransferOutput : contract.estimate.ethToTokenSwapOutput
         method = sending ? contract.ethToTokenTransferOutput : contract.ethToTokenSwapOutput
         args = sending ? [independentValueParsed, deadline, recipient.address] : [independentValueParsed, deadline]
         value = dependentValueMaximum
       } else if (swapType === TOKEN_TO_ETH) {
-        estimate = sending ? contract.estimate.tokenToEthTransferOutput : contract.estimate.tokenToEthSwapOutput
+        //estimate = sending ? contract.estimate.tokenToEthTransferOutput : contract.estimate.tokenToEthSwapOutput
         method = sending ? contract.tokenToEthTransferOutput : contract.tokenToEthSwapOutput
         args = sending
           ? [independentValueParsed, dependentValueMaximum, deadline, recipient.address]
           : [independentValueParsed, dependentValueMaximum, deadline]
         value = ethers.constants.Zero
       } else if (swapType === TOKEN_TO_TOKEN) {
-        estimate = sending ? contract.estimate.tokenToTokenTransferOutput : contract.estimate.tokenToTokenSwapOutput
+        //estimate = sending ? contract.estimate.tokenToTokenTransferOutput : contract.estimate.tokenToTokenSwapOutput
         method = sending ? contract.tokenToTokenTransferOutput : contract.tokenToTokenSwapOutput
         args = sending
           ? [
@@ -618,10 +621,13 @@ export default function ExchangePage({ initialCurrency, sending = false, params 
           : [independentValueParsed, dependentValueMaximum, ethers.constants.MaxUint256, deadline, outputCurrency]
         value = ethers.constants.Zero
       }
-    }
+    }*/
 
-    const estimatedGasLimit = await estimate(...args, { value })
-    method(...args, { value, gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN) }).then(response => {
+    /* Preventing `Error: gas required exceeds allowance or always failing transaction` @Yeonjae */
+    //const estimatedGasLimit = await estimate(...args, { value })
+    //method(...args, { value, gasLimit: calculateGasMargin(estimatedGasLimit, GAS_MARGIN) }).then(response => {
+    console.log("args:",args)
+    method(...args, { value, gasLimit: 750000 }).then(response => {
       addTransaction(response)
     })
   }
