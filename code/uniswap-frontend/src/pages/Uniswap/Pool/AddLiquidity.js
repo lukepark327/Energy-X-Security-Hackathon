@@ -386,10 +386,10 @@ export default function AddLiquidity({ params }) {
 
     const deadline = Math.ceil(Date.now() / 1000) + DEADLINE_FROM_NOW
 
-    const estimatedGasLimit = await exchangeContract.estimate.addLiquidity(
+    const estimatedGasLimit = await exchangeContract.estimate.investLiquidity(
       isNewExchange ? ethers.constants.Zero : liquidityTokensMin,
-      isNewExchange ? outputValueParsed : outputValueMax,
-      deadline,
+      //isNewExchange ? outputValueParsed : outputValueMax,
+      //deadline,
       {
         value: inputValueParsed
       }
@@ -398,10 +398,10 @@ export default function AddLiquidity({ params }) {
     const gasLimit = calculateGasMargin(estimatedGasLimit, GAS_MARGIN)
 
     exchangeContract
-      .addLiquidity(
+      .investLiquidity(
         isNewExchange ? ethers.constants.Zero : liquidityTokensMin,
-        isNewExchange ? outputValueParsed : outputValueMax,
-        deadline,
+        //isNewExchange ? outputValueParsed : outputValueMax,
+        //deadline,
         {
           value: inputValueParsed,
           gasLimit
