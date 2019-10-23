@@ -227,7 +227,7 @@ export default function AddLiquidity({ params }) {
   const [totalPoolTokens, setTotalPoolTokens] = useState()
   const fetchPoolTokens = useCallback(() => {
     if (exchangeContract) {
-      exchangeContract.totalSupply().then(totalSupply => {
+      exchangeContract.totalShares().then(totalSupply => {
         setTotalPoolTokens(totalSupply)
       })
     }
