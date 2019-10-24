@@ -440,8 +440,8 @@ const INITIAL_TOKENS_CONTEXT = {
   },
   3: {
     '0x622bebbeecf160d947c26e189ea8ea3c7c42bb87': {
-      [NAME]: 'TestToken',
-      [SYMBOL]: 'TEST',
+      [NAME]: 'Electric Power Token',
+      [SYMBOL]: 'EPT',
       [DECIMALS]: 1,
       [EXCHANGE_ADDRESS]: '0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095'
     }
