@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import { useWeb3Context } from 'web3-react'
+//import { useWeb3Context } from 'web3-react'
 import { useFactoryContract } from '../../hooks'
 import { useTransactionAdder } from '../../contexts/Transactions'
 
@@ -34,7 +34,7 @@ const CustomCardContentsWrapper = styled.div`
 let initialized = false;
 
 export default function Prediction() {
-  const { account } = useWeb3Context()
+  //const { account } = useWeb3Context()
   const factory = useFactoryContract()
   const addTransaction = useTransactionAdder()
   let reqTime = 0;
@@ -62,7 +62,7 @@ export default function Prediction() {
         var remaining = Math.max((endTime - now) / duration, 0);
         var value = Math.round(end - (remaining * range));
         obj.innerHTML = value;
-        if (value == end) {
+        if (value === end) {
             clearInterval(timer);
         }
     }
@@ -81,6 +81,7 @@ export default function Prediction() {
     })
   }
 
+/*
   async function getResponse() {
     // args : reqADDRESS + reqTime
     console.log("GET RESPONSE! @", account + reqTime)
@@ -90,21 +91,32 @@ export default function Prediction() {
       document.getElementById("predictedValue").innerHTML = response;
     })
   }
+*/
 
-  async function updateResponse(time) {
+  async function updateResponse(time, animation, start) {
     if (document.getElementById("predictedValue") && document.getElementById("priceValue")) {
       // args : reqADDRESS + reqTime
       console.log("GET LAST RESPONSE!")
       factory.latestPredictedPower().then(response => {
-        animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
-        animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
+	if (animation) {
+	  if (start) {
+            animateValue("predictedValue", start, response, time);
+            animateValue("priceValue", start, (response+100)/2, time);
+	  } else {
+            animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
+            animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
+	  }
+	} else {
+          document.getElementById("predictedValue").innerHTML = response;
+          document.getElementById("priceValue").innerHTML = (response+100)/2;
+	}
       })
     }
   }
 
   function initializeValue() {
     console.log("INIT")
-    updateResponse(2000)
+    updateResponse(2000, true, 999)
   }
 
   // Initialize event
@@ -112,13 +124,15 @@ export default function Prediction() {
     setTimeout(function() {
       initializeValue()
     }, 100);
-
     // Update every 5sec
     setInterval(function() {
-      updateResponse(500)
+      updateResponse(500, true)
     }, 5000);
-
     initialized = true;
+  } else {
+    setTimeout(function() {
+      updateResponse(1, false)
+    }, 100);
   }
 
   return (
@@ -128,7 +142,7 @@ export default function Prediction() {
               <OfflineBolt onClick={requestInference}/> Prediction Result
             </Box>
             <Box textAlign="right" fontWeight="fontWeightBold" fontSize="6vh" m={1} id="bodytext">
-              <span id="predictedValue">999</span> <span id="unit">MW</span>
+              <span id="predictedValue"></span> <span id="unit">MW</span>
             </Box>
 	  </Typography>
 	</CustomCardContentsWrapper>
