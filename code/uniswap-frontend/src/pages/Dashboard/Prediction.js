@@ -31,6 +31,8 @@ const CustomCardContentsWrapper = styled.div`
   }
 `
 
+let initialized = false;
+
 export default function Prediction() {
   const { account } = useWeb3Context()
   const factory = useFactoryContract()
@@ -90,12 +92,14 @@ export default function Prediction() {
   }
 
   async function updateResponse(time) {
-    // args : reqADDRESS + reqTime
-    console.log("GET LAST RESPONSE!")
-    factory.latestPredictedPower().then(response => {
-      animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
-      animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
-    })
+    if (document.getElementById("predictedValue") && document.getElementById("priceValue")) {
+      // args : reqADDRESS + reqTime
+      console.log("GET LAST RESPONSE!")
+      factory.latestPredictedPower().then(response => {
+        animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
+        animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
+      })
+    }
   }
 
   function initializeValue() {
@@ -103,15 +107,19 @@ export default function Prediction() {
     updateResponse(2000)
   }
 
-  // Initialize
-  setTimeout(function() {
-    initializeValue()
-  }, 100);
+  // Initialize event
+  if (!initialized) {
+    setTimeout(function() {
+      initializeValue()
+    }, 100);
 
-  // Update every 5sec
-  setInterval(function() {
-    updateResponse(500)
-  }, 5000);
+    // Update every 5sec
+    setInterval(function() {
+      updateResponse(500)
+    }, 5000);
+
+    initialized = true;
+  }
 
   return (
 	<CustomCardContentsWrapper>
