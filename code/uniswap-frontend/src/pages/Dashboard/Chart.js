@@ -6,10 +6,10 @@ import {
 
 const data = [
   {
-    name: '00h', Demand: 4000, Supply: 2400, amt: 2400,
+    name: '00h', Demand: 4000, Supply: 4300, amt: 2400,
   },
   {
-    name: '03h', Demand: 3000, Supply: 1398, amt: 2210,
+    name: '03h', Demand: 3000, Supply: 3998, amt: 2210,
   },
   {
     name: '06h', Demand: 2000, Supply: 2500, amt: 2290,
@@ -21,7 +21,7 @@ const data = [
     name: '12h', Demand: 1890, Supply: 4800, amt: 2181,
   },
   {
-    name: '15h', Demand: 2390, Supply: 3800, amt: 2500,
+    name: '15h', Demand: 2390, Supply: 3300, amt: 2500,
   },
   {
     name: '18h', Demand: 3490, Supply: 4300, amt: 2100,

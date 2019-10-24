@@ -32,6 +32,7 @@ const CustomCardContentsWrapper = styled.div`
 `
 
 let initialized = false;
+let oldResponse = 999;
 
 export default function Prediction() {
   //const { account } = useWeb3Context()
@@ -62,7 +63,7 @@ export default function Prediction() {
         var remaining = Math.max((endTime - now) / duration, 0);
         var value = Math.round(end - (remaining * range));
         obj.innerHTML = value;
-        if (value === end) {
+        if (value == end) {
             clearInterval(timer);
         }
     }
@@ -93,30 +94,26 @@ export default function Prediction() {
   }
 */
 
-  async function updateResponse(time, animation, start) {
+  async function updateResponse(time, animation) {
     if (document.getElementById("predictedValue") && document.getElementById("priceValue")) {
       // args : reqADDRESS + reqTime
       console.log("GET LAST RESPONSE!")
       factory.latestPredictedPower().then(response => {
 	if (animation) {
-	  if (start) {
-            animateValue("predictedValue", start, response, time);
-            animateValue("priceValue", start, (response+100)/2, time);
-	  } else {
-            animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
-            animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
-	  }
+          animateValue("predictedValue", oldResponse, response, time);
+          animateValue("priceValue", Math.round(oldResponse/140004), Math.round(response/140004), time);
 	} else {
           document.getElementById("predictedValue").innerHTML = response;
-          document.getElementById("priceValue").innerHTML = (response+100)/2;
+          document.getElementById("priceValue").innerHTML = Math.round(response/140004);
 	}
+	oldResponse = response;
       })
     }
   }
 
   function initializeValue() {
     console.log("INIT")
-    updateResponse(2000, true, 999)
+    updateResponse(2000, true)
   }
 
   // Initialize event
@@ -126,7 +123,7 @@ export default function Prediction() {
     }, 100);
     // Update every 5sec
     setInterval(function() {
-      updateResponse(500, true)
+      updateResponse(2000, true)
     }, 5000);
     initialized = true;
   } else {
