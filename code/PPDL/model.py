@@ -11,6 +11,9 @@ class FLModel:
         self.loss = None
         self.metrics = None
 
+    def summary(self):
+        self.__model.summary()
+
     def fit(self, x_train, y_train, epochs=5, validation_data = None,callbacks=[], verbose=0):
         return self.__model.fit(x_train, y_train, epochs=epochs, validation_data = validation_data, callbacks=callbacks, verbose=verbose)
 
@@ -43,26 +46,28 @@ class FLModel:
         pyplot.show()
 
 if __name__ == "__main__":
-    df = pd.read_pickle('../../data/df.pkl')
+    df = pd.read_pickle('../data/df.pkl')
     X = df.drop('power(MW)', axis=1).values
     y = df['power(MW)'].values
     x_train, x_test,y_train, y_test =  train_test_split(X, y, train_size = 0.8)
 
     model = Sequential()
-    model.add(Dense(input_dim=x_train.shape[1], output_dim=512))
+    model.add(Dense(input_dim=x_train.shape[1], units=512))
     model.add(Activation("relu"))
     model.add(Dropout(0.2))
-    model.add(Dense(output_dim=256))
+    model.add(Dense(units=256))
     model.add(Activation("relu"))
     model.add(Dropout(0.2))
-    model.add(Dense(output_dim=128))
+    model.add(Dense(units=128))
     model.add(Activation("relu"))
     model.add(Dropout(0.2))
-    model.add(Dense(output_dim=1))
+    model.add(Dense(units=1))
     model.compile("nadam", "mse", ["mse"])
     
     flmodel = FLModel(model)
     
+    model.summary()
+    quit()
     # weights = flmodel.get_weights()
     # print(weights)
     
