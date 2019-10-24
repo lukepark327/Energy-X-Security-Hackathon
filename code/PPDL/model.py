@@ -66,11 +66,9 @@ if __name__ == "__main__":
     
     flmodel = FLModel(model)
     
-    model.summary()
-    quit()
+    flmodel.summary()
     # weights = flmodel.get_weights()
     # print(weights)
     
     flmodel.plot(x_train,y_train, x_test, y_test)
     
-    print(flmodel.loss, flmodel.metrics)
