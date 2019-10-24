@@ -131,16 +131,14 @@ if __name__ == "__main__":
             participants.append(i)
 
             node.flmodel.set_weights(currentBlockWeight)  # Pre-Prepare @ pBFT
+            weights = node.flmodel.get_weights()
+            # node.flmodel.summary()
 
             # training
             # early_stopping = tf.keras.callbacks.EarlyStopping(
             #     monitor='loss', patience=20)  # loss is 'mae'  # early stopping
-            node.flmodel.summary()
-            print(node.x_train.shape)
-            node.flmodel.fit(
-                node.x_train, node.y_train,
-                # callbacks=[early_stopping],
-                epochs=1)  # Prepare and Commit @ pBFT
+
+            node.flmodel.fit(node.x_train, node.y_train,epochs=1)  # Prepare and Commit @ pBFT
             peer_weight = node.flmodel.get_weights()
             peer_weights.append(peer_weight)  # Reply @ pBFT
 
@@ -164,7 +162,6 @@ if __name__ == "__main__":
             int(time.time())
         )
         flchain.append(new_block)  # append next block
-
         Leader.flmodel.evaluate(Leader.x_test, Leader.y_test)  # eval.
 
         # print
