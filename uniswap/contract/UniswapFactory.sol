@@ -222,6 +222,18 @@ contract UniswapFactory is FactoryInterface {
         infResponse memory res = infResponse(_power);
         infResponses[requestID] = res;
         
+        // update fee rate for every exchanges
+        uint prevPower = uint(latestPredictedPower);
+        if (prevPower == 0){
+            prevPower = uint(_power);
+        }
+        uint curPower = uint(_power);
+        for (uint i=0;i<tokenList.length;i++){
+            address payable exchangeAddr = address(uint160(tokenToExchange[tokenList[i]]));
+            UniswapExchange ex = UniswapExchange(exchangeAddr);
+            ex.updateFeeRate(prevPower, curPower);
+        }
+        
         // update latest predicted power
         latestPredictedPower = _power;
     }

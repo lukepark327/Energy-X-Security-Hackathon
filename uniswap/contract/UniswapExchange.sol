@@ -16,7 +16,11 @@ contract UniswapExchange {
     event Divestment(address indexed liquidityProvider, uint256 indexed sharesBurned);
 
     /// CONSTANTS
-    uint256 public constant FEE_RATE = 500;        //fee = 1/feeRate = 0.2%
+    //uint256 public constant FEE_RATE = 500;        // fee = 1/feeRate = 0.2%
+    
+    uint256 public feeRate = 500;       // fee = 1/feeRate
+    uint256 public MIN_FEE_RATE = 100;  // 0.1%
+    uint256 public MAX_FEE_RATE = 1000; // 1%
 
     /// STORAGE
     uint256 public ethPool;             // amount of eth in exchange
@@ -277,7 +281,7 @@ contract UniswapExchange {
         exchangeInitialized
     {
         // get fee
-        uint256 fee = ethIn.div(FEE_RATE);
+        uint256 fee = ethIn.div(feeRate);
         
         // calc new exchange values
         uint256 newEthPool = ethPool.add(ethIn);
@@ -310,7 +314,7 @@ contract UniswapExchange {
         exchangeInitialized
     {
         // get fee
-        uint256 fee = tokensIn.div(FEE_RATE);
+        uint256 fee = tokensIn.div(feeRate);
         
         // calc new exchange values
         uint256 newTokenPool = tokenPool.add(tokensIn);
@@ -354,7 +358,7 @@ contract UniswapExchange {
         require(exchangeAddress != address(0) && exchangeAddress != address(this));
         
         // set fee
-        uint256 fee = tokensIn.div(FEE_RATE);
+        uint256 fee = tokensIn.div(feeRate);
         
         // calc new exchange values
         uint256 newTokenPool = tokenPool.add(tokensIn);
@@ -386,5 +390,43 @@ contract UniswapExchange {
         address payable pAddr = address(uint160(addr));
         return pAddr;
     }
+    
+    
+    //
+    // fee rate functions
+    //
+    
+    // update fee rate with predicted power values
+    function updateFeeRate(uint prevPower, uint curPower) public {
+        // only factory can call this function
+        require(msg.sender == factoryAddress);
+        
+        // update fee rate
+        // high curPower -> high fee / low curPower -> low fee
+        feeRate = feeRate * prevPower / curPower;
+        if (feeRate > MAX_FEE_RATE){
+            feeRate = MAX_FEE_RATE;
+        }
+        if (feeRate < MIN_FEE_RATE){
+            feeRate = MIN_FEE_RATE;
+        }
+    }
+    
+    function setFeeRate(uint newFeeRate) public {
+        feeRate = newFeeRate;
+    }
+    
+    function setMaxFeeRate(uint newMaxFeeRate) public{
+        MAX_FEE_RATE = newMaxFeeRate;
+    }
+    
+    function setMinFeeRate(uint newMinFeeRate) public{
+        MIN_FEE_RATE = newMinFeeRate;
+    }
+    
 }
+
+
+
+
 
