@@ -16,7 +16,7 @@ def get_train_test(PATH="../data/df.pkl", getScaler=False):
         x_train, x_test,y_train, y_test =  train_test_split(X, y, train_size = 0.8)
         features = list(df.columns)
         features.remove('power(MW)')
-        return features, x_train, x_test,y_train, y_test
+        return features, x_train, y_train, x_test,y_test
     except:
         # Read data, selected columns only
         weather_df = pd.read_csv('../data/weather20102018.csv', encoding='EUC_KR', usecols=['일시', '기온(°C)', '강수량(mm)', '풍속(m/s)', '풍향(16방위)', '습도(%)', '적설(cm)'])
