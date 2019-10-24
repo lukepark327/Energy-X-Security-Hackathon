@@ -99,9 +99,11 @@ function CreateExchange({ location, params }) {
   }, [tokenAddress.address, symbol, decimals, exchangeAddress, account, t, tokenAddressError])
 
   async function createExchange() {
-    const estimatedGasLimit = await factory.estimate.createExchange(tokenAddress.address)
+    //const estimatedGasLimit = await factory.estimate.createExchange(tokenAddress.address)
+    const estimatedGasLimit = await factory.estimate.launchExchange(tokenAddress.address)
 
-    factory.createExchange(tokenAddress.address, { gasLimit: estimatedGasLimit }).then(response => {
+    //factory.createExchange(tokenAddress.address, { gasLimit: estimatedGasLimit }).then(response => {
+    factory.launchExchange(tokenAddress.address, { gasLimit: estimatedGasLimit }).then(response => {
       ReactGA.event({
         category: 'Pool',
         action: 'CreateExchange'
