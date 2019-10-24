@@ -59,6 +59,9 @@ export default function App() {
 	        <Route exact path="/" component={Dashboard} />
 	        <Route exact path="/Dashboard" component={Dashboard} />
 	        <Route exact path="/Uniswap" component={Uniswap} />
+	        <Route exact path="/swap" component={Uniswap} />
+	        <Route exact path="/send" component={Uniswap} />
+	        <Route exact path="/add-liquidity" component={Uniswap} />
 	      </Switch>
             </Body>
           </BodyWrapper>
