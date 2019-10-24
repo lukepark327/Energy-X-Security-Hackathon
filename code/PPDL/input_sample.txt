@@ -1,0 +1,18 @@
+{
+    "temperature":2,
+    "rain":0,
+    "wind_speed":1,
+    "wind_direction":320,
+    "humidity":63,     
+    "snow":0,  
+    "year":2010,  
+    "month":1,  
+    "day":1,    
+    "mon":0,    
+    "tues":0,    
+    "wed":0,    
+    "thurs":0,    
+    "fri":1,    
+    "sat":0,    
+    "sun":0
+}
