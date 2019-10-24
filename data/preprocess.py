@@ -34,6 +34,7 @@ df['연'] = df['Date'].dt.year
 df['월'] = df['Date'].dt.month
 df['일'] = df['Date'].dt.day
 df['요일'] = df['Date'].dt.dayofweek
+df['시간'] = df['Date'].dt.hour
 
 # One-hot encode day-of-the-week
 df['요일'] = df['요일'].apply(lambda x: day_list(x))
@@ -44,7 +45,7 @@ for i,row in df.iterrows():
     one_hot_index = one_hot_index[0][0]
     df.at[i,'요일'+str(one_hot_index+1)] = 1
 df = df.drop(['요일', 'Date'],axis=1)
-df.round().astype(int)
+df = df.round().astype(int)
 
 # Save data
 df.to_pickle('df.pkl')
