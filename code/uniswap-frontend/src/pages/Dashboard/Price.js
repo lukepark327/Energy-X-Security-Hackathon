@@ -35,7 +35,7 @@ export default function Price() {
               <MonetizationOn /> Current Price
             </Box>
             <Box textAlign="right" fontWeight="fontWeightBold" fontSize="6vh" m={1} id="bodytext">
-              0.0 <span id="unit">ETH/W</span>
+              <span id="priceValue">0</span> <span id="unit">EPT/W</span>
             </Box>
 	  </Typography>
 	</CustomCardContentsWrapper>

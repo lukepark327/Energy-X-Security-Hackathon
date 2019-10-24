@@ -94,6 +94,7 @@ export default function Prediction() {
     console.log("GET LAST RESPONSE!")
     factory.latestPredictedPower().then(response => {
       animateValue("predictedValue", parseInt(document.getElementById("predictedValue").innerHTML), response, time);
+      animateValue("priceValue", parseInt(document.getElementById("priceValue").innerHTML), (response+100)/2, time);
     })
   }
 
