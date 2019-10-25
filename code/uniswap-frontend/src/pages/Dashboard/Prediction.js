@@ -45,7 +45,7 @@ export default function Prediction() {
     end: 0,
     delay: 0,
     duration: 1,
-    decimals: 3,
+    decimals: 0,
     onReset: () => stopUpdate = true,
     //onUpdate: () => console.log('Updated!'),               
     onPauseResume: () => console.log('Paused or resumed!'),

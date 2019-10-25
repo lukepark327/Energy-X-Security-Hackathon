@@ -32,7 +32,7 @@ let stopUpdate = false;
 let initialized = false;
 
 export default function Price() {
-  const contract = useExchangeContract("0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095")
+  const contract = useExchangeContract("0x87264AB274d9DFBE81D009e46592895811127bdA")
   const { countUp, update } = useCountUp({
     start: 0,
     end: 0,

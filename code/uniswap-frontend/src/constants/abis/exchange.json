@@ -3,6 +3,138 @@
       "constant": false,
       "inputs": [
          {
+            "name": "_sharesBurned",
+            "type": "uint256"
+         },
+         {
+            "name": "_minEth",
+            "type": "uint256"
+         },
+         {
+            "name": "_minTokens",
+            "type": "uint256"
+         }
+      ],
+      "name": "divestLiquidity",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_minTokens",
+            "type": "uint256"
+         },
+         {
+            "name": "_timeout",
+            "type": "uint256"
+         },
+         {
+            "name": "_recipient",
+            "type": "address"
+         }
+      ],
+      "name": "ethToTokenPayment",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_minTokens",
+            "type": "uint256"
+         },
+         {
+            "name": "_timeout",
+            "type": "uint256"
+         }
+      ],
+      "name": "ethToTokenSwap",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_tokenAmount",
+            "type": "uint256"
+         }
+      ],
+      "name": "initializeExchange",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_minShares",
+            "type": "uint256"
+         }
+      ],
+      "name": "investLiquidity",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "newFeeRate",
+            "type": "uint256"
+         }
+      ],
+      "name": "setFeeRate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "newMaxFeeRate",
+            "type": "uint256"
+         }
+      ],
+      "name": "setMaxFeeRate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "newMinFeeRate",
+            "type": "uint256"
+         }
+      ],
+      "name": "setMinFeeRate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
             "name": "_tokenAmount",
             "type": "uint256"
          },
@@ -26,38 +158,10 @@
       "type": "function"
    },
    {
-      "constant": true,
-      "inputs": [],
-      "name": "tokenPool",
-      "outputs": [
-         {
-            "name": "",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
       "constant": false,
       "inputs": [
          {
-            "name": "_minShares",
-            "type": "uint256"
-         }
-      ],
-      "name": "investLiquidity",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "_sharesBurned",
+            "name": "_tokenAmount",
             "type": "uint256"
          },
          {
@@ -65,87 +169,37 @@
             "type": "uint256"
          },
          {
-            "name": "_minTokens",
+            "name": "_timeout",
             "type": "uint256"
          }
       ],
-      "name": "divestLiquidity",
+      "name": "tokenToEthSwap",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [],
-      "name": "FEE_RATE",
-      "outputs": [
-         {
-            "name": "",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
       "type": "function"
    },
    {
       "constant": false,
       "inputs": [
          {
-            "name": "_tokenPurchased",
+            "name": "_recipient",
             "type": "address"
          },
          {
-            "name": "_tokensSold",
-            "type": "uint256"
-         },
-         {
-            "name": "_minTokensReceived",
-            "type": "uint256"
-         },
-         {
-            "name": "_timeout",
+            "name": "_minTokens",
             "type": "uint256"
          }
       ],
-      "name": "tokenToTokenSwap",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [],
-      "name": "totalShares",
+      "name": "tokenToTokenIn",
       "outputs": [
          {
             "name": "",
-            "type": "uint256"
+            "type": "bool"
          }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [
-         {
-            "name": "addr",
-            "type": "address"
-         }
-      ],
-      "name": "addrToPayable",
-      "outputs": [
-         {
-            "name": "",
-            "type": "address"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "pure",
+      "payable": true,
+      "stateMutability": "payable",
       "type": "function"
    },
    {
@@ -182,52 +236,15 @@
       "constant": false,
       "inputs": [
          {
-            "name": "_minTokens",
-            "type": "uint256"
-         },
-         {
-            "name": "_timeout",
-            "type": "uint256"
-         },
-         {
-            "name": "_recipient",
-            "type": "address"
-         }
-      ],
-      "name": "ethToTokenPayment",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "_recipient",
+            "name": "_tokenPurchased",
             "type": "address"
          },
          {
-            "name": "_minTokens",
+            "name": "_tokensSold",
             "type": "uint256"
-         }
-      ],
-      "name": "tokenToTokenIn",
-      "outputs": [
+         },
          {
-            "name": "",
-            "type": "bool"
-         }
-      ],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "_minTokens",
+            "name": "_minTokensReceived",
             "type": "uint256"
          },
          {
@@ -235,166 +252,28 @@
             "type": "uint256"
          }
       ],
-      "name": "ethToTokenSwap",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "tokens_sold",
-            "type": "uint256"
-         },
-         {
-            "name": "min_eth",
-            "type": "uint256"
-         },
-         {
-            "name": "deadline",
-            "type": "uint256"
-         }
-      ],
-      "name": "tokenToEthSwapInput",
-      "outputs": [
-         {
-            "name": "",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [],
-      "name": "factoryAddress",
-      "outputs": [
-         {
-            "name": "",
-            "type": "address"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [],
-      "name": "tokenAddress",
-      "outputs": [
-         {
-            "name": "",
-            "type": "address"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "_tokenAmount",
-            "type": "uint256"
-         },
-         {
-            "name": "_minEth",
-            "type": "uint256"
-         },
-         {
-            "name": "_timeout",
-            "type": "uint256"
-         }
-      ],
-      "name": "tokenToEthSwap",
+      "name": "tokenToTokenSwap",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
    },
    {
-      "constant": true,
-      "inputs": [],
-      "name": "invariant",
-      "outputs": [
-         {
-            "name": "",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [
-         {
-            "name": "_provider",
-            "type": "address"
-         }
-      ],
-      "name": "getShares",
-      "outputs": [
-         {
-            "name": "_shares",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
-      "constant": true,
-      "inputs": [],
-      "name": "ethPool",
-      "outputs": [
-         {
-            "name": "",
-            "type": "uint256"
-         }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-   },
-   {
       "constant": false,
       "inputs": [
          {
-            "name": "_minTokens",
+            "name": "prevPower",
             "type": "uint256"
          },
          {
-            "name": "_timeout",
+            "name": "curPower",
             "type": "uint256"
          }
       ],
-      "name": "ethToTokenSwapInput",
+      "name": "updateFeeRate",
       "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-   },
-   {
-      "constant": false,
-      "inputs": [
-         {
-            "name": "_tokenAmount",
-            "type": "uint256"
-         }
-      ],
-      "name": "initializeExchange",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
    },
    {
@@ -490,5 +369,169 @@
       ],
       "name": "Divestment",
       "type": "event"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "addr",
+            "type": "address"
+         }
+      ],
+      "name": "addrToPayable",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "ethPool",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "factoryAddress",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "feeRate",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "_provider",
+            "type": "address"
+         }
+      ],
+      "name": "getShares",
+      "outputs": [
+         {
+            "name": "_shares",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "invariant",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "MAX_FEE_RATE",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "MIN_FEE_RATE",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenAddress",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenPool",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "totalShares",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
    }
 ]

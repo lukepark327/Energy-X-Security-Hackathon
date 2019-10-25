@@ -439,11 +439,11 @@ const INITIAL_TOKENS_CONTEXT = {
     }
   },
   3: {
-    '0x622bebbeecf160d947c26e189ea8ea3c7c42bb87': {
+    '0xa2529b50E8F58B8278A81fBD10491e7Fe7d19947': {
       [NAME]: 'Electric Power Token',
       [SYMBOL]: 'EPT',
       [DECIMALS]: 1,
-      [EXCHANGE_ADDRESS]: '0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095'
+      [EXCHANGE_ADDRESS]: '0x87264AB274d9DFBE81D009e46592895811127bdA'
     }
   },
   4: {
