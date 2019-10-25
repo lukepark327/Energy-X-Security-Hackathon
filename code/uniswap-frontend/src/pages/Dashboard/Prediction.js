@@ -1,5 +1,4 @@
 import React from 'react';
-import CountUp from 'react-countup';
 import { useCountUp } from 'react-countup';
 import styled from 'styled-components'
 
@@ -33,22 +32,20 @@ const CustomCardContentsWrapper = styled.div`
   }
 `
 
-let initialized = false;
-
 export default function Prediction() {
   //const { account } = useWeb3Context()
   const factory = useFactoryContract()
   const addTransaction = useTransactionAdder()
   let reqTime = 0;
 
-  const { countUp, start, pauseResume, reset, update } = useCountUp({
+  const { countUp, update } = useCountUp({
     start: 0,
     end: 1234567,
     delay: 1000,
     duration: 1,
     decimals: 3, 
     onReset: () => console.log('Resetted!'),
-    onUpdate: () => console.log('Updated!'),               
+    //onUpdate: () => console.log('Updated!'),               
     onPauseResume: () => console.log('Paused or resumed!'),
     onStart: ({ pauseResume }) => console.log(pauseResume),
     onEnd: ({ pauseResume }) => console.log(pauseResume),
@@ -83,19 +80,11 @@ export default function Prediction() {
   }
 
   function initializeValue() {
-    console.log("INIT")
     updateResponse()
   }
 
   // Initialize event
-  if (!initialized) {
-    initializeValue()
-    // Update every 5sec
-    setInterval(function() {
-      updateResponse()
-    }, 5000);
-    initialized = true;
-  }
+  initializeValue()
 
   return (
 	<CustomCardContentsWrapper>

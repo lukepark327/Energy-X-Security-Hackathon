@@ -1,5 +1,4 @@
 import React from 'react';
-import CountUp from 'react-countup';
 import { useCountUp } from 'react-countup';
 import styled from 'styled-components'
 
@@ -29,19 +28,16 @@ const CustomCardContentsWrapper = styled.div`
     font-weight: normal;
   }
 `
-let initialized = false
-
 export default function Price() {
   const contract = useExchangeContract("0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095")
-
-  const { countUp, start, pauseResume, reset, update } = useCountUp({
+  const { countUp, update } = useCountUp({
     start: 0,
     end: 1234567,
     delay: 1000,
     duration: 1,
     decimals: 3,
     onReset: () => console.log('Resetted!'),
-    onUpdate: () => console.log('Updated!'),
+    //onUpdate: () => console.log('Updated!'),               
     onPauseResume: () => console.log('Paused or resumed!'),
     onStart: ({ pauseResume }) => console.log(pauseResume),
     onEnd: ({ pauseResume }) => console.log(pauseResume),
@@ -53,26 +49,18 @@ export default function Price() {
       contract.tokenPool().then(response => {
 	let T = response
 	let price = E*(1/(T-1))
-	console.log("E = ", parseInt(E._hex), "T = ", parseInt(T._hex))
+	//console.log("E = ", parseInt(E._hex), "T = ", parseInt(T._hex))
         update(price)
       })
     })
   }
 
   function initializeValue() {
-    console.log("INIT")
     updatePrice()
   }
 
   // Initialize event
-  if (!initialized) {
-    initializeValue()
-    // Update every 5sec
-    setInterval(function() {
-      updatePrice()
-    }, 5000);
-    initialized = true;
-  }
+  initializeValue()
 
   return (
 	<CustomCardContentsWrapper>
