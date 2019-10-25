@@ -439,11 +439,11 @@ const INITIAL_TOKENS_CONTEXT = {
     }
   },
   3: {
-    '0xae8630822cfc9f5894dc834935a9af83d22fb0fb': {
-      [NAME]: 'TestToken',
-      [SYMBOL]: 'TEST',
+    '0x622bebbeecf160d947c26e189ea8ea3c7c42bb87': {
+      [NAME]: 'Electric Power Token',
+      [SYMBOL]: 'EPT',
       [DECIMALS]: 1,
-      [EXCHANGE_ADDRESS]: '0x5D3360CFb57bE9eC02493A9787787324477ee5bb'
+      [EXCHANGE_ADDRESS]: '0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095'
     }
   },
   4: {

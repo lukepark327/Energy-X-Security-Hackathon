@@ -231,7 +231,8 @@ export async function getTokenDecimals(tokenAddress, library) {
 
 // get the exchange address for a token from the factory
 export async function getTokenExchangeAddressFromFactory(tokenAddress, networkId, library) {
-  return getFactoryContract(networkId, library).getExchange(tokenAddress)
+  //return getFactoryContract(networkId, library).getExchange(tokenAddress)
+  return getFactoryContract(networkId, library).tokenToExchangeLookup(tokenAddress)
 }
 
 // get the ether balance of an address

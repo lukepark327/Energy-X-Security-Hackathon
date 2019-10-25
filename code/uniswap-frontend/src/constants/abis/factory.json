@@ -1,74 +1,387 @@
 [
-  {
-    "name": "NewExchange",
-    "inputs": [
-      { "type": "address", "name": "token", "indexed": true },
-      { "type": "address", "name": "exchange", "indexed": true }
-    ],
-    "anonymous": false,
-    "type": "event"
-  },
-  {
-    "name": "initializeFactory",
-    "outputs": [],
-    "inputs": [{ "type": "address", "name": "template" }],
-    "constant": false,
-    "payable": false,
-    "type": "function",
-    "gas": 35725
-  },
-  {
-    "name": "createExchange",
-    "outputs": [{ "type": "address", "name": "out" }],
-    "inputs": [{ "type": "address", "name": "token" }],
-    "constant": false,
-    "payable": false,
-    "type": "function",
-    "gas": 187911
-  },
-  {
-    "name": "getExchange",
-    "outputs": [{ "type": "address", "name": "out" }],
-    "inputs": [{ "type": "address", "name": "token" }],
-    "constant": true,
-    "payable": false,
-    "type": "function",
-    "gas": 715
-  },
-  {
-    "name": "getToken",
-    "outputs": [{ "type": "address", "name": "out" }],
-    "inputs": [{ "type": "address", "name": "exchange" }],
-    "constant": true,
-    "payable": false,
-    "type": "function",
-    "gas": 745
-  },
-  {
-    "name": "getTokenWithId",
-    "outputs": [{ "type": "address", "name": "out" }],
-    "inputs": [{ "type": "uint256", "name": "token_id" }],
-    "constant": true,
-    "payable": false,
-    "type": "function",
-    "gas": 736
-  },
-  {
-    "name": "exchangeTemplate",
-    "outputs": [{ "type": "address", "name": "out" }],
-    "inputs": [],
-    "constant": true,
-    "payable": false,
-    "type": "function",
-    "gas": 633
-  },
-  {
-    "name": "tokenCount",
-    "outputs": [{ "type": "uint256", "name": "out" }],
-    "inputs": [],
-    "constant": true,
-    "payable": false,
-    "type": "function",
-    "gas": 663
-  }
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "_blockNumber",
+            "type": "uint256"
+         }
+      ],
+      "name": "readBlock",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         },
+         {
+            "name": "",
+            "type": "bytes32"
+         },
+         {
+            "name": "",
+            "type": "bytes32"
+         },
+         {
+            "name": "",
+            "type": "bytes32"
+         },
+         {
+            "name": "",
+            "type": "bytes32"
+         },
+         {
+            "name": "",
+            "type": "int64"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [],
+      "name": "resetBlocks",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [],
+      "name": "deleteRequest",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "getBlocksLength",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "getExchangeCount",
+      "outputs": [
+         {
+            "name": "exchangeCount",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_blockNumber",
+            "type": "uint256"
+         },
+         {
+            "name": "_prevBlockHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "_weightHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "_testSetHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "_participantHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "_timestamp",
+            "type": "int64"
+         }
+      ],
+      "name": "insertBlock",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "requestID",
+            "type": "string"
+         }
+      ],
+      "name": "getResponse",
+      "outputs": [
+         {
+            "name": "",
+            "type": "int256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "getRequestLength",
+      "outputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_reqTime",
+            "type": "int256"
+         },
+         {
+            "name": "_infos",
+            "type": "int256[]"
+         }
+      ],
+      "name": "requestInference",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "_token",
+            "type": "address"
+         }
+      ],
+      "name": "launchExchange",
+      "outputs": [
+         {
+            "name": "exchange",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "name": "tokenList",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [
+         {
+            "name": "requestID",
+            "type": "string"
+         },
+         {
+            "name": "_power",
+            "type": "int256"
+         }
+      ],
+      "name": "insertResponse",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "getRequest",
+      "outputs": [
+         {
+            "name": "",
+            "type": "address"
+         },
+         {
+            "name": "",
+            "type": "int256"
+         },
+         {
+            "name": "",
+            "type": "int256[]"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "_token",
+            "type": "address"
+         }
+      ],
+      "name": "tokenToExchangeLookup",
+      "outputs": [
+         {
+            "name": "exchange",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": false,
+      "inputs": [],
+      "name": "popRequest",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [],
+      "name": "latestPredictedPower",
+      "outputs": [
+         {
+            "name": "",
+            "type": "int256"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "_exchange",
+            "type": "address"
+         }
+      ],
+      "name": "exchangeToTokenLookup",
+      "outputs": [
+         {
+            "name": "token",
+            "type": "address"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "constant": true,
+      "inputs": [
+         {
+            "name": "",
+            "type": "uint256"
+         }
+      ],
+      "name": "blocks",
+      "outputs": [
+         {
+            "name": "blockNumber",
+            "type": "uint256"
+         },
+         {
+            "name": "prevBlockHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "weightHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "testSetHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "participantHash",
+            "type": "bytes32"
+         },
+         {
+            "name": "timestamp",
+            "type": "int64"
+         }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+   },
+   {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+   },
+   {
+      "anonymous": false,
+      "inputs": [
+         {
+            "indexed": true,
+            "name": "exchange",
+            "type": "address"
+         },
+         {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+         }
+      ],
+      "name": "ExchangeLaunch",
+      "type": "event"
+   }
 ]
