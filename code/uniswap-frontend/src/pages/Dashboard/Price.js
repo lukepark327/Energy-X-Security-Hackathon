@@ -28,19 +28,22 @@ const CustomCardContentsWrapper = styled.div`
     font-weight: normal;
   }
 `
+let stopUpdate = false;
+let initialized = false;
+
 export default function Price() {
   const contract = useExchangeContract("0x194B23aA2EC27b50A1f7d6c31E8971EDd3848095")
   const { countUp, update } = useCountUp({
     start: 0,
-    end: 1234567,
-    delay: 1000,
+    end: 0,
+    delay: 0,
     duration: 1,
     decimals: 3,
-    onReset: () => console.log('Resetted!'),
+    onReset: () => stopUpdate = true,
     //onUpdate: () => console.log('Updated!'),               
     onPauseResume: () => console.log('Paused or resumed!'),
-    onStart: ({ pauseResume }) => console.log(pauseResume),
-    onEnd: ({ pauseResume }) => console.log(pauseResume),
+    onStart: ({ pauseResume }) => stopUpdate = false,
+    onEnd: ({ pauseResume }) => console.log("Price onEnd"),
   });
 
   async function updatePrice() {
@@ -50,17 +53,21 @@ export default function Price() {
 	let T = response
 	let price = E*(1/(T-1))
 	//console.log("E = ", parseInt(E._hex), "T = ", parseInt(T._hex))
-        update(price)
+  	if (!stopUpdate) {
+          update(price)
+	}
       })
     })
   }
 
-  function initializeValue() {
-    updatePrice()
-  }
+  updatePrice()
 
-  // Initialize event
-  initializeValue()
+  if (!initialized) {
+    setInterval(function() {
+      updatePrice()
+    }, 3000);
+    initialized = true;
+  }
 
   return (
 	<CustomCardContentsWrapper>

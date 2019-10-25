@@ -31,6 +31,8 @@ const CustomCardContentsWrapper = styled.div`
     font-weight: normal;
   }
 `
+let stopUpdate = false;
+let initialized = false;
 
 export default function Prediction() {
   //const { account } = useWeb3Context()
@@ -40,15 +42,15 @@ export default function Prediction() {
 
   const { countUp, update } = useCountUp({
     start: 0,
-    end: 1234567,
-    delay: 1000,
+    end: 0,
+    delay: 0,
     duration: 1,
-    decimals: 3, 
-    onReset: () => console.log('Resetted!'),
+    decimals: 3,
+    onReset: () => stopUpdate = true,
     //onUpdate: () => console.log('Updated!'),               
     onPauseResume: () => console.log('Paused or resumed!'),
-    onStart: ({ pauseResume }) => console.log(pauseResume),
-    onEnd: ({ pauseResume }) => console.log(pauseResume),
+    onStart: ({ pauseResume }) => stopUpdate = false,
+    onEnd: ({ pauseResume }) => console.log('Prediction onEnd'),
   });
 
   async function requestInference() {      
@@ -75,16 +77,19 @@ export default function Prediction() {
 
   async function updateResponse() {
     factory.latestPredictedPower().then(response => {
-      update(response/10000000)
+      if (!stopUpdate)
+        update(response)
     })
   }
 
-  function initializeValue() {
-    updateResponse()
-  }
+  updateResponse()
 
-  // Initialize event
-  initializeValue()
+  if (!initialized) {
+    setInterval(function() {
+      updateResponse()
+    }, 3000);
+    initialized = true;
+  }
 
   return (
 	<CustomCardContentsWrapper>
