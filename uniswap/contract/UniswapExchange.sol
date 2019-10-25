@@ -19,8 +19,8 @@ contract UniswapExchange {
     //uint256 public constant FEE_RATE = 500;        // fee = 1/feeRate = 0.2%
     
     uint256 public feeRate = 500;       // fee = 1/feeRate
-    uint256 public MIN_FEE_RATE = 100;  // 0.1%
-    uint256 public MAX_FEE_RATE = 1000; // 1%
+    uint256 public MIN_FEE_RATE = 100;  // 1%
+    uint256 public MAX_FEE_RATE = 1000; // 0.1%
 
     /// STORAGE
     uint256 public ethPool;             // amount of eth in exchange
