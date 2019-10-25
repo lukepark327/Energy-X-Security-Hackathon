@@ -96,10 +96,10 @@ contract UniswapFactory is FactoryInterface {
     
     
     // address of EPToken
-    address tokenAddr = 0xaA4060a8BbA893Fa590b3C9CB841B2e877cC5EB1;
+    //address tokenAddr = 0xaA4060a8BbA893Fa590b3C9CB841B2e877cC5EB1;
     
     // ElectricPower token
-    ERC20 EPtoken = ERC20(tokenAddr);
+    //ERC20 EPtoken = ERC20(tokenAddr);
     
     // owner of this contract
     address public owner;
@@ -189,8 +189,8 @@ contract UniswapFactory is FactoryInterface {
         infRequest memory req = infRequest(msg.sender, _reqTime, _infos);
         infReqs.push(req);
         
-        // TODO: test code for front end
-        latestPredictedPower = int(block.timestamp);
+        // test code for front end
+        //latestPredictedPower = int(block.timestamp);
     }
     
     // for relayer, to get request from list
