@@ -233,7 +233,7 @@ export default function RemoveLiquidity({ params }) {
 
   const fetchPoolTokens = useCallback(() => {
     if (exchange) {
-      exchange.totalSupply().then(totalSupply => {
+      exchange.totalShares().then(totalSupply => {
         setTotalPoolTokens(totalSupply)
       })
     }
