@@ -1,4 +1,6 @@
 import React from 'react';
+import CountUp from 'react-countup';
+import { useCountUp } from 'react-countup';
 import styled from 'styled-components'
 
 //import { useWeb3Context } from 'web3-react'
@@ -32,7 +34,6 @@ const CustomCardContentsWrapper = styled.div`
 `
 
 let initialized = false;
-let oldResponse = 999;
 
 export default function Prediction() {
   //const { account } = useWeb3Context()
@@ -40,37 +41,18 @@ export default function Prediction() {
   const addTransaction = useTransactionAdder()
   let reqTime = 0;
 
-  function animateValue(id, start, end, duration) {
-    // assumes integer values for start and end
-    
-    var obj = document.getElementById(id);
-    var range = end - start;
-    // no timer shorter than 50ms (not really visible any way)
-    var minTimer = 50;
-    // calc step time to show all interediate values
-    var stepTime = Math.abs(Math.floor(duration / range));
-    
-    // never go below minTimer
-    stepTime = Math.max(stepTime, minTimer);
-    
-    // get current time and calculate desired end time
-    var startTime = new Date().getTime();
-    var endTime = startTime + duration;
-    var timer;
-  
-    function run() {
-        var now = new Date().getTime();
-        var remaining = Math.max((endTime - now) / duration, 0);
-        var value = Math.round(end - (remaining * range));
-        obj.innerHTML = value;
-        if (value == end) {
-            clearInterval(timer);
-        }
-    }
-    
-    timer = setInterval(run, stepTime);
-    run();
-  }
+  const { countUp, start, pauseResume, reset, update } = useCountUp({
+    start: 0,
+    end: 1234567,
+    delay: 1000,
+    duration: 1,
+    decimals: 3, 
+    onReset: () => console.log('Resetted!'),
+    onUpdate: () => console.log('Updated!'),               
+    onPauseResume: () => console.log('Paused or resumed!'),
+    onStart: ({ pauseResume }) => console.log(pauseResume),
+    onEnd: ({ pauseResume }) => console.log(pauseResume),
+  });
 
   async function requestInference() {      
     // args : int _reqTime, int[] memory _infos
@@ -94,42 +76,25 @@ export default function Prediction() {
   }
 */
 
-  async function updateResponse(time, animation) {
-    if (document.getElementById("predictedValue") && document.getElementById("priceValue")) {
-      // args : reqADDRESS + reqTime
-      console.log("GET LAST RESPONSE!")
-      factory.latestPredictedPower().then(response => {
-	if (animation) {
-          animateValue("predictedValue", oldResponse, response, time);
-          animateValue("priceValue", Math.round(oldResponse/140004), Math.round(response/140004), time);
-	} else {
-          document.getElementById("predictedValue").innerHTML = response;
-          document.getElementById("priceValue").innerHTML = Math.round(response/140004);
-	}
-	oldResponse = response;
-      })
-    }
+  async function updateResponse() {
+    factory.latestPredictedPower().then(response => {
+      update(response/10000000)
+    })
   }
 
   function initializeValue() {
     console.log("INIT")
-    updateResponse(2000, true)
+    updateResponse()
   }
 
   // Initialize event
   if (!initialized) {
-    setTimeout(function() {
-      initializeValue()
-    }, 100);
+    initializeValue()
     // Update every 5sec
     setInterval(function() {
-      updateResponse(2000, true)
+      updateResponse()
     }, 5000);
     initialized = true;
-  } else {
-    setTimeout(function() {
-      updateResponse(1, false)
-    }, 100);
   }
 
   return (
@@ -139,7 +104,7 @@ export default function Prediction() {
               <OfflineBolt onClick={requestInference}/> Prediction Result
             </Box>
             <Box textAlign="right" fontWeight="fontWeightBold" fontSize="6vh" m={1} id="bodytext">
-              <span id="predictedValue"></span> <span id="unit">MW</span>
+              {countUp} <span id="unit">MW</span>
             </Box>
 	  </Typography>
 	</CustomCardContentsWrapper>
