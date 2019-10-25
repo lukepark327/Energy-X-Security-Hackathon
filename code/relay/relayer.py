@@ -46,7 +46,7 @@ json_file.close()
 
 contract_ = w3.eth.contract(
     address=Web3.toChecksumAddress(
-        "0x91dc3c1781ef83587061597e94c9b57b99991145"),
+        "0x2b1EdC24529820B340Be24984e7194d4f6cD9827"),
     abi=contract_interface['abi']
 )
 addr = w3.toChecksumAddress("0xf0E7570a403515Da23323dbb27515dF5b7ae6077")
